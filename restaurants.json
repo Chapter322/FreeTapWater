@@ -6,7 +6,7 @@
     "Latitude": 52.6627561,
     "Longitude": 4.8271265,
     "Tap Water Policy": "No, they charge high price",
-    "Comments": "approximately €4 for a 25cl bottle"
+    "Comments": "approximately €4 for a 20cl bottle"
   },
   {
     "Restaurant Name": "Kim's So Korean Food Centrum",
@@ -51,7 +51,7 @@
     "Latitude": 52.36249244,
     "Longitude": 4.89209845,
     "Tap Water Policy": "No, they charge high price",
-    "Comments": "They won't serve tap water. Bottled water is 4 euros / 25cl"
+    "Comments": "They won't serve tap water. Bottled water is 4 euros / 250ml"
   },
   {
     "Restaurant Name": "NJoy",
@@ -133,5 +133,77 @@
     "Longitude": 4.48607437,
     "Tap Water Policy": "Yes, for free",
     "Comments": "If you order another drink from the menu"
+  },
+  {
+    "Restaurant Name": "Brass aan de Maas",
+    "City": "Ravenstein",
+    "Address": "Maasdijk 33",
+    "Latitude": 51.79592045,
+    "Longitude": 5.65711501,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "De Kluizenaar",
+    "City": "Nijmegen",
+    "Address": "Burghardt van Den Berghstraat 96",
+    "Latitude": 51.83968251,
+    "Longitude": 5.85611962,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "De Kaars",
+    "City": "Hilversum",
+    "Address": "Havenstraat 14C",
+    "Latitude": 52.22224436,
+    "Longitude": 5.16869448,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "No tap water offered. Only bottled water, regardless of the amount of food or alcohol consumed."
+  },
+  {
+    "Restaurant Name": "Restaurant Parc",
+    "City": "Hilversum",
+    "Address": "Havenstraat 58",
+    "Latitude": 52.21960417,
+    "Longitude": 5.1671005,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "El Mundo Almere 2.0",
+    "City": "Almere",
+    "Address": "Kerkgracht 6",
+    "Latitude": 52.33590087,
+    "Longitude": 5.21956429,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Oudaen",
+    "City": "Utrecht",
+    "Address": "Oudegracht 99",
+    "Latitude": 52.09299918,
+    "Longitude": 5.11669101,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Koffiesalon west",
+    "City": "Amsterdam",
+    "Address": "Eerste Constantijn Huygensstraat 82",
+    "Latitude": 52.36336017,
+    "Longitude": 4.87454813,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Brasserie SenT",
+    "City": "Amsterdam",
+    "Address": "Saenredamstraat 39-41",
+    "Latitude": 52.35594529,
+    "Longitude": 4.88895612,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
   }
 ]
