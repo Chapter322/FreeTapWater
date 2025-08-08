@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -8,7 +7,6 @@
 
 <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
 <style>
-        /* Basic styles and typography */
         body {
             margin: 0;
             background: linear-gradient(135deg, #def2ea 0%, #d3dbf7 100%);
@@ -55,12 +53,10 @@
             margin: 0;
             line-height: 1.6;
         }
-        /* Button wrapper with margin for spacing */
         .btn-wrap {
             text-align: center;
             margin: 32px 0 16px 0;
         }
-        /* Styling the share button */
         .share-btn {
             background: #b2c8f6;
             color: #333;
@@ -76,7 +72,6 @@
         .share-btn:hover {
             background: #91b7ef;
         }
-        /* Modal styling */
         #modal {
             display: none;
             position: fixed;
@@ -112,7 +107,6 @@
             border: none;
             border-radius: 0 0 16px 16px;
         }
-        /* Map container */
         .map-wrap {
             max-width: 1000px;
             margin: 10px auto 40px auto;
@@ -125,7 +119,6 @@
             height: 420px;
             border: none;
         }
-        /* Responsive adjustments */
         @media (max-width: 700px) {
             .header, .container, .map-wrap {
                 max-width: 98vw;
@@ -140,11 +133,9 @@
                 height: 400px;
             }
         }
-        /* Popup content styling */
         .popup-content div {
             margin-bottom: 6px;
         }
-        /* Counter bar above the map */
         #category-counters {
             max-width: 1200px;
             margin: 0 auto 10px auto;
@@ -156,7 +147,6 @@
         #category-counters span {
             margin: 0 15px;
         }
-        /* Legend styling inside Leaflet */
         .info.legend {
             background: white;
             padding: 10px;
@@ -186,328 +176,252 @@
             margin-right: 8px;
             flex-shrink: 0;
         }
-		
-		/* Accordion container */
 		.accordion {
-		background: rgba(255,255,255,0.6);
-		border-radius: 12px;
-		margin: 12px 0;
-		padding: 0;
-		max-width: 1200px;
-		box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+		    background: rgba(255,255,255,0.6);
+		    border-radius: 12px;
+		    margin: 12px 0;
+		    padding: 0;
+		    max-width: 1200px;
+		    box-shadow: 0 1px 8px rgba(0,0,0,0.04);
 		}
-		
-		/* Accordion header */
 		.accordion-header {
-		cursor: pointer;
-		font-family: serif, serif;
-		font-size: 1.5em;
-		padding: 12px 24px;
-		font-weight: 600;
-		border-bottom: 1px solid #ccc;
-		user-select: none;
+		    cursor: pointer;
+		    font-family: serif, serif;
+		    font-size: 1.5em;
+		    padding: 12px 24px;
+		    font-weight: 600;
+		    user-select: none;
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
 		}
-		
-		/* Accordion content collapsed */
-		.accordion-content {
-		padding: 0 24px 16px 24px;
-		font-size: 1em;
-		color: #5c5f6b;
-		line-height: 1.5;
-		display: none;
+		.chevron {
+		    transition: transform 0.3s ease;
 		}
-		
-		/* Accordion content expanded */
-		.accordion.active .accordion-content {
-		display: block;
-		}
-		  
-		/* Summary text visible when collapsed */
 		.accordion-summary {
-		padding: 12px 24px;
-		font-size: 1em;
-		color: #5c5f6b;
-		line-height: 1.4;
+		    padding: 12px 24px;
+		    font-size: 1em;
+		    color: #5c5f6b;
+		    line-height: 1.4;
 		}
-		
-		/* Contact link styling */
+		.accordion-content {
+		    padding: 12px 24px 16px 24px;
+		    font-size: 1em;
+		    color: #5c5f6b;
+		    line-height: 1.5;
+		    display: none;
+		}
+		.accordion.active .accordion-summary {
+		    display: none;
+		}
+		.accordion.active .accordion-content {
+		    display: block;
+		}
+		.chevron.rotate {
+		    transform: rotate(90deg);
+		}
 		.contact-link {
-		display: inline-block;
-		margin: 16px auto 32px auto;
-		font-weight: 600;
-		color: #3366cc;
-		cursor: pointer;
-		text-decoration: underline;
-		text-align: center;
+		    display: inline-block;
+		    margin: 16px auto 32px auto;
+		    font-weight: 600;
+		    color: #3366cc;
+		    cursor: pointer;
+		    text-decoration: underline;
+		    text-align: center;
 		}
-    </style>
-<style>
-.main-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 4px;
-}
-.accordion-header {
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.chevron {
-    transition: transform 0.3s ease;
-}
-.accordion-content {
-    max-height: 60px;
-    overflow: hidden;
-    transition: max-height 0.5s ease;
-}
-.accordion-content.expanded {
-    max-height: 500px;
-}
-.chevron.rotate {
-    transform: rotate(90deg);
-}
-</style></head>
+</style>
+</head>
 <body>
-<!-- Header section -->
 <div class="header">
 <h1>Discover restaurants that offer free tap water!</h1>
 </div>
-<!-- Informational text container -->
 <div class="container">
 <div class="accordion" id="intro-accordion">
 <div class="accordion-header">Introduction<span class="chevron">&gt;</span></div>
 <div class="accordion-summary">
-				In the Netherlands, many restaurants charge high prices for bottled water, causing frustration. We highlight those offering free or cheap tap water.
-			</div>
+    In the Netherlands, many restaurants charge high prices for bottled water, causing frustration. We highlight those offering free or cheap tap water.
+</div>
 <div class="accordion-content">
-				In the Netherlands, it's common for restaurants and cafés to charge exorbitant prices for bottled water. This practice often leads to frustration among clients who feel compelled to pay for something that should be freely available. Our initiative aims to highlight establishments that offer tap water at no or minimal cost, promoting transparency and encouraging others to adopt similar practices.
-			</div>
+    In the Netherlands, it's common for restaurants and cafés to charge exorbitant prices for bottled water. This practice often leads to frustration among clients who feel compelled to pay for something that should be freely available. Our initiative aims to highlight establishments that offer tap water at no or minimal cost, promoting transparency and encouraging others to adopt similar practices.
+</div>
 </div>
 <div class="accordion" id="objective-accordion">
 <div class="accordion-header">Objective<span class="chevron">&gt;</span></div>
 <div class="accordion-summary">
-				We aim to build a database of restaurants offering free or reasonably priced tap water, promoting fairness and sustainability.
-			</div>
+    We aim to build a database of restaurants offering free or reasonably priced tap water, promoting fairness and sustainability.
+</div>
 <div class="accordion-content">
-				Our goal is to create a collaborative database of restaurants and cafés that provide free or reasonably priced tap water. By showcasing these establishments, we hope to inspire others to follow suit and foster a culture of fairness and sustainability in the hospitality industry.
-			</div>
+    Our goal is to create a collaborative database of restaurants and cafés that provide free or reasonably priced tap water. By showcasing these establishments, we hope to inspire others to follow suit and foster a culture of fairness and sustainability in the hospitality industry.
+</div>
 </div>
 <div class="accordion" id="help-accordion">
 <div class="accordion-header">How You Can Help<span class="chevron">&gt;</span></div>
 <div class="accordion-summary">
-				Share details of restaurants offering affordable or free tap water to help expand our database and foster change.
-			</div>
-<div class="accordion-content">
-				If you know of a restaurant or café that offers free or affordable tap water, please share their details with us. Your contributions will help expand our database and promote positive change in the industry. Together, we can make a difference and encourage more businesses to adopt transparent and fair practices.
-			</div>
+    Share details of restaurants offering affordable or free tap water to help expand our database and foster change.
 </div>
-<!-- Share details button with spacing -->
+<div class="accordion-content">
+    If you know of a restaurant or café that offers free or affordable tap water, please share their details with us. Your contributions will help expand our database and promote positive change in the industry. Together, we can make a difference and encourage more businesses to adopt transparent and fair practices.
+</div>
+</div>
 <div class="btn-wrap">
 <button class="share-btn" onclick="openModal()">Share Details</button>
 </div>
-<!-- Contact link for restaurants to confirm or correct info -->
 <div style="text-align: center;">
 <a class="contact-link" href="mailto:contact.danatec@gmail.com?subject=Tap Water Info Confirmation" rel="noopener noreferrer" target="_blank">
-				Restaurant owner? Confirm or correct your listing here.
-			</a>
+    Restaurant owner? Confirm or correct your listing here.
+</a>
 </div>
 </div>
-<!-- Counters bar fixed above the map -->
 <div id="category-counters">
 <span style="color: red;">High Price: <span id="counter-red">0</span></span>
 <span style="color: orange;">Reasonable Cost: <span id="counter-yellow">0</span></span>
 <span style="color: green;">Free: <span id="counter-green">0</span></span>
 </div>
-<!-- Map container -->
 <div class="map-wrap">
 <div id="map"></div>
 </div>
-<!-- Modal window for form submission -->
 <div id="modal">
 <div id="modal-content">
 <button id="modal-close" onclick="closeModal()">×</button>
 <iframe id="modal-iframe" src="https://app.youform.com/forms/ubbqidvt"></iframe>
 </div>
 </div>
-<!-- Leaflet.js library -->
-<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="></script>
 <script>
-        // Modal open/close handlers
-        function openModal() {
-            document.getElementById("modal").style.display = "flex";
-        }
-        function closeModal() {
-            document.getElementById("modal").style.display = "none";
-        }
-        document.getElementById("modal").addEventListener("click", function(e) {
-            if (e.target === this) closeModal();
-        });
-
-        // Leaflet map initialization centered on the Netherlands
-        const map = L.map("map").setView([52.37, 4.89], 7);
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-            attribution: "&copy; OpenStreetMap contributors",
-        }).addTo(map);
-
-        // Categories definition and colors
-        const allCategories = [
-            "No, they charge high price",
-            "Yes, at reasonable cost",
-            "Yes, for free"
-        ];
-        function getColor(category) {
-            switch(category) {
-                case "No, they charge high price": return "red";
-                case "Yes, at reasonable cost": return "orange";
-                case "Yes, for free": return "green";
-                default: return "blue";
+function openModal() {
+    document.getElementById("modal").style.display = "flex";
+}
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+document.getElementById("modal").addEventListener("click", function(e) {
+    if (e.target === this) closeModal();
+});
+const map = L.map("map").setView([52.37, 4.89], 7);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors",
+}).addTo(map);
+const allCategories = [
+    "No, they charge high price",
+    "Yes, at reasonable cost",
+    "Yes, for free"
+];
+function getColor(category) {
+    switch(category) {
+        case "No, they charge high price": return "red";
+        case "Yes, at reasonable cost": return "orange";
+        case "Yes, for free": return "green";
+        default: return "blue";
+    }
+}
+const counts = {
+    "No, they charge high price": 0,
+    "Yes, at reasonable cost": 0,
+    "Yes, for free": 0
+};
+const categoryGroups = {};
+function loadFilterState() {
+    const saved = localStorage.getItem("tapWaterFilters");
+    if (saved) return JSON.parse(saved);
+    return {
+        "No, they charge high price": true,
+        "Yes, at reasonable cost": true,
+        "Yes, for free": true
+    };
+}
+function saveFilterState(state) {
+    localStorage.setItem("tapWaterFilters", JSON.stringify(state));
+}
+const legend = L.control({ position: "bottomright" });
+legend.onAdd = function(map) {
+    const div = L.DomUtil.create("div", "info legend");
+    div.innerHTML += "<strong>Tap Water Policy</strong><br>";
+    const filterState = loadFilterState();
+    allCategories.forEach(category => {
+        const safeId = category.replace(/\s+/g, "_");
+        const checked = filterState[category] ? "checked" : "";
+        div.innerHTML += `
+            <label id="label_${safeId}" style="opacity:${filterState[category] ? 1 : 0.4};">
+                <input type="checkbox" class="legend-checkbox" data-category="${category}" ${checked}>
+                <span class="legend-color-box" style="background:${getColor(category)};"></span>
+                ${category}
+            </label>
+        `;
+    });
+    return div;
+};
+legend.addTo(map);
+function setupLegendCheckboxes() {
+    const filterState = loadFilterState();
+    document.querySelectorAll(".legend-checkbox").forEach(checkbox => {
+        checkbox.addEventListener("change", e => {
+            const category = e.target.dataset.category;
+            const label = document.getElementById("label_" + category.replace(/\s+/g, "_"));
+            if (e.target.checked) {
+                categoryGroups[category].addTo(map);
+                label.style.opacity = "1";
+            } else {
+                map.removeLayer(categoryGroups[category]);
+                label.style.opacity = "0.4";
             }
-        }
-
-        // Count objects for fixed counters
-        const counts = {
-            "No, they charge high price": 0,
-            "Yes, at reasonable cost": 0,
-            "Yes, for free": 0
-        };
-
-        // Layer groups per category
-        const categoryGroups = {};
-
-        // Load saved filter state or default to all true
-        function loadFilterState() {
-            const saved = localStorage.getItem("tapWaterFilters");
-            if (saved) return JSON.parse(saved);
-            return {
-                "No, they charge high price": true,
-                "Yes, at reasonable cost": true,
-                "Yes, for free": true
-            };
-        }
-
-        // Save filter state to localStorage
-        function saveFilterState(state) {
-            localStorage.setItem("tapWaterFilters", JSON.stringify(state));
-        }
-
-        // Create legend control with persistent checkboxes
-        const legend = L.control({ position: "bottomright" });
-        legend.onAdd = function(map) {
-            const div = L.DomUtil.create("div", "info legend");
-            div.innerHTML += "<strong>Tap Water Policy</strong><br>";
-            const filterState = loadFilterState();
-
-            allCategories.forEach(category => {
-                const safeId = category.replace(/\s+/g, "_");
-                const checked = filterState[category] ? "checked" : "";
-                div.innerHTML += `
-                    <label id="label_${safeId}" style="opacity:${filterState[category] ? 1 : 0.4};">
-                        <input type="checkbox" class="legend-checkbox" data-category="${category}" ${checked}>
-                        <span class="legend-color-box" style="background:${getColor(category)};"></span>
-                        ${category}
-                    </label>
-                `;
-            });
-            return div;
-        };
-        legend.addTo(map);
-
-        // After adding legend, add event listeners to checkboxes
-        function setupLegendCheckboxes() {
-            const filterState = loadFilterState();
-            document.querySelectorAll(".legend-checkbox").forEach(checkbox => {
-                checkbox.addEventListener("change", e => {
-                    const category = e.target.dataset.category;
-                    const label = document.getElementById("label_" + category.replace(/\s+/g, "_"));
-                    if (e.target.checked) {
-                        categoryGroups[category].addTo(map);
-                        label.style.opacity = "1";
-                    } else {
-                        map.removeLayer(categoryGroups[category]);
-                        label.style.opacity = "0.4";
-                    }
-                    filterState[category] = e.target.checked;
-                    saveFilterState(filterState);
-                });
-            });
-        }
-
-        // Load restaurant data and create markers and layers
-        fetch("restaurants.json")
-            .then(res => res.json())
-            .then(data => {
-                // Initialize layer groups for each category
-                allCategories.forEach(cat => {
-                    categoryGroups[cat] = L.layerGroup();
-                });
-
-                // Populate markers and count totals
-                data.forEach(item => {
-                    const cat = item["Tap Water Policy"] || "Unknown";
-                    if (counts[cat] !== undefined) counts[cat]++;
-                    if (!categoryGroups[cat]) {
-                        categoryGroups[cat] = L.layerGroup();
-                    }
-                    const marker = L.circleMarker([item.Latitude, item.Longitude], {
-                        radius: 8,
-                        color: getColor(cat),
-                        fillColor: getColor(cat),
-                        fillOpacity: 0.8,
-                        weight: 1
-                    }).bindPopup(`
-                        <div class="popup-content">
-                            <div><b>${item["Restaurant Name"]}</b></div>
-                            <div><u>${item.City} - ${item.Address}</u></div>
-                            <div><i>${cat}</i></div>
-                            <div>${item.Comments || ""}</div>
-                        </div>
-                    `);
-                    categoryGroups[cat].addLayer(marker);
-                });
-
-                // Add layers to map in order: red bottom, orange middle, green top
-                categoryGroups["No, they charge high price"].addTo(map);
-                categoryGroups["Yes, at reasonable cost"].addTo(map);
-                categoryGroups["Yes, for free"].addTo(map);
-
-                // Set fixed counters (do not update with filtering)
-                document.getElementById("counter-red").textContent = counts["No, they charge high price"];
-                document.getElementById("counter-yellow").textContent = counts["Yes, at reasonable cost"];
-                document.getElementById("counter-green").textContent = counts["Yes, for free"];
-
-                // Apply persisted filter state to layers visibility
-                const filterState = loadFilterState();
-                allCategories.forEach(cat => {
-                    if (!filterState[cat]) {
-                        map.removeLayer(categoryGroups[cat]);
-                    }
-                });
-
-                // Setup event listeners on legend checkboxes
-                setupLegendCheckboxes();
-            })
-            .catch(err => {
-                console.error("Error loading restaurants.json:", err);
-                alert("Restaurants layer can't be loaded");
-            });
-    </script>
-<!-- Add script to toggle accordion -->
-<script>
-		document.querySelectorAll('.accordion-header').forEach(header => {
-			header.addEventListener('click', () => {
-				const accordion = header.parentElement;
-				accordion.classList.toggle('active');
-			});
-		});
-	</script>
-<script>
+            filterState[category] = e.target.checked;
+            saveFilterState(filterState);
+        });
+    });
+}
+fetch("restaurants.json")
+    .then(res => res.json())
+    .then(data => {
+        allCategories.forEach(cat => {
+            categoryGroups[cat] = L.layerGroup();
+        });
+        data.forEach(item => {
+            const cat = item["Tap Water Policy"] || "Unknown";
+            if (counts[cat] !== undefined) counts[cat]++;
+            if (!categoryGroups[cat]) {
+                categoryGroups[cat] = L.layerGroup();
+            }
+            const marker = L.circleMarker([item.Latitude, item.Longitude], {
+                radius: 8,
+                color: getColor(cat),
+                fillColor: getColor(cat),
+                fillOpacity: 0.8,
+                weight: 1
+            }).bindPopup(`
+                <div class="popup-content">
+                    <div><b>${item["Restaurant Name"]}</b></div>
+                    <div><u>${item.City} - ${item.Address}</u></div>
+                    <div><i>${cat}</i></div>
+                    <div>${item.Comments || ""}</div>
+                </div>
+            `);
+            categoryGroups[cat].addLayer(marker);
+        });
+        categoryGroups["No, they charge high price"].addTo(map);
+        categoryGroups["Yes, at reasonable cost"].addTo(map);
+        categoryGroups["Yes, for free"].addTo(map);
+        document.getElementById("counter-red").textContent = counts["No, they charge high price"];
+        document.getElementById("counter-yellow").textContent = counts["Yes, at reasonable cost"];
+        document.getElementById("counter-green").textContent = counts["Yes, for free"];
+        const filterState = loadFilterState();
+        allCategories.forEach(cat => {
+            if (!filterState[cat]) {
+                map.removeLayer(categoryGroups[cat]);
+            }
+        });
+        setupLegendCheckboxes();
+    })
+    .catch(err => {
+        console.error("Error loading restaurants.json:", err);
+        alert("Restaurants layer can't be loaded");
+    });
 document.querySelectorAll('.accordion-header').forEach(header => {
     header.addEventListener('click', () => {
-        const content = header.nextElementSibling;
+        const accordion = header.parentElement;
+        accordion.classList.toggle('active');
         const chevron = header.querySelector('.chevron');
-        content.classList.toggle('expanded');
-        chevron.classList.toggle('rotate');
+        if (chevron) chevron.classList.toggle('rotate');
     });
 });
 </script>
@@ -520,4 +434,3 @@ document.querySelectorAll('.accordion-header').forEach(header => {
 </footer>
 </body>
 </html>
-
