@@ -1,0 +1,137 @@
+[
+  {
+    "Restaurant Name": "Bij Rembrandt",
+    "City": "Heerhugowaard",
+    "Address": "Middenwaard 87",
+    "Latitude": 52.6627561,
+    "Longitude": 4.8271265,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "approximately €4 for a 25cl bottle"
+  },
+  {
+    "Restaurant Name": "Kim's So Korean Food Centrum",
+    "City": "Amsterdam",
+    "Address": "Molensteeg 13H",
+    "Latitude": 52.37562418,
+    "Longitude": 4.90084545,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": "We ordered other drinks and were served complimentary tap water"
+  },
+  {
+    "Restaurant Name": "Kong Izakaya",
+    "City": "Utrecht",
+    "Address": "Lange Nieuwstraat 21",
+    "Latitude": 52.08784679,
+    "Longitude": 5.12331865,
+    "Tap Water Policy": "Yes, at reasonable cost",
+    "Comments": "0.5€ per glass, indicated on the menu"
+  },
+  {
+    "Restaurant Name": "Vincenzo’s",
+    "City": "Den Haag",
+    "Address": "Prins Hendrikstraat 75",
+    "Latitude": 52.08187441,
+    "Longitude": 4.29261783,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "Confirmed at Vincenzos Zeeheldenkwartier"
+  },
+  {
+    "Restaurant Name": "Shizzle",
+    "City": "Appeldoorn",
+    "Address": "Kerklaan 17",
+    "Latitude": 52.2174029,
+    "Longitude": 5.9613791,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Tokyo Ramen Takeichi",
+    "City": "Amsterdam",
+    "Address": "Vijzelstraat 135",
+    "Latitude": 52.36249244,
+    "Longitude": 4.89209845,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "They won't serve tap water. Bottled water is 4 euros / 25cl"
+  },
+  {
+    "Restaurant Name": "NJoy",
+    "City": "Amsterdam",
+    "Address": "Korte Leidsedwarsstraat 93",
+    "Latitude": 52.36390727,
+    "Longitude": 4.88406493,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Bar-B Burgers ‘N’ Beers",
+    "City": "Amsterdam",
+    "Address": "Lange Leidsedwarsstraat 29",
+    "Latitude": 52.36435452,
+    "Longitude": 4.88428438,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "They refuse to give tap water when asked and say only bottle water is available, despite being a bar and serving a lot of alcohol, they do not offer free water with any alcohol."
+  },
+  {
+    "Restaurant Name": "Duke of Tokyo",
+    "City": "Amsterdam",
+    "Address": "Reguliersdwarsstraat 37",
+    "Latitude": 52.36659861,
+    "Longitude": 4.89062678,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Spaghetteria",
+    "City": "Rotterdam",
+    "Address": "Nieuwe Binnenweg 77",
+    "Latitude": 51.91697405,
+    "Longitude": 4.46938679,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Spaghetteria",
+    "City": "Rotterdam",
+    "Address": "Pannekoekstraat 76",
+    "Latitude": 51.92320544,
+    "Longitude": 4.4883681,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Oasis Rotterdam",
+    "City": "Rotterdam",
+    "Address": "Schiehaven 15-A",
+    "Latitude": 51.90268732,
+    "Longitude": 4.45211864,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Mr. Finch",
+    "City": "Utrecht",
+    "Address": "Drieharingstraat 5",
+    "Latitude": 52.09225634,
+    "Longitude": 5.11605058,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Mori Japanese bistro",
+    "City": "Rotterdam",
+    "Address": "Van Oldenbarneveltstraat 156A",
+    "Latitude": 51.91894881,
+    "Longitude": 4.47286187,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "7 euro for a bottle"
+  },
+  {
+    "Restaurant Name": "Indochine Cafe",
+    "City": "Rotterdam",
+    "Address": "Grotemarkt 272",
+    "Latitude": 51.92040005,
+    "Longitude": 4.48607437,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": "If you order another drink from the menu"
+  }
+]
