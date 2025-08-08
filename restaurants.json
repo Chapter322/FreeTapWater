@@ -232,5 +232,707 @@
     "Longitude": 4.30482304,
     "Tap Water Policy": "Yes, for free",
     "Comments": ""
+  },
+  {
+    "Restaurant Name": "Oops Malatang",
+    "City": "Amsterdam",
+    "Address": "Albert Cuypstraat 92H",
+    "Latitude": 52.35519956,
+    "Longitude": 4.89130184,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "No tap water is offered at all"
+  },
+  {
+    "Restaurant Name": "Takumi",
+    "City": "Utrecht",
+    "Address": "Vredenburg 21",
+    "Latitude": 52.09335764,
+    "Longitude": 5.11397374,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Pizzeria Di Luca",
+    "City": "Amsterdam",
+    "Address": "Spijkerkade 31",
+    "Latitude": 52.38478494,
+    "Longitude": 4.92149926,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Het Pakhuis",
+    "City": "Groningen",
+    "Address": "Peperstraat 8-2",
+    "Latitude": 53.2180857,
+    "Longitude": 6.57097674,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Flow Bar",
+    "City": "Delft",
+    "Address": "De Groene Haven 302",
+    "Latitude": 52.00384497,
+    "Longitude": 4.35843567,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "NielZ Café Restaurant",
+    "City": "Almelo",
+    "Address": "Marktplein 31",
+    "Latitude": 52.35677151,
+    "Longitude": 6.66360037,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Box Sociaal Jordaan",
+    "City": "Amsterdam",
+    "Address": "Bloemgracht 47",
+    "Latitude": 52.37479807,
+    "Longitude": 4.88144288,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Tales Groningen",
+    "City": "Groningen",
+    "Address": "Schuitendiep 33",
+    "Latitude": 53.21852443,
+    "Longitude": 6.5725468,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Annie’s",
+    "City": "Leiden",
+    "Address": "Hoogstraat 1A",
+    "Latitude": 52.15959859,
+    "Longitude": 4.49142635,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "They only sell bottled water (€3+)"
+  },
+  {
+    "Restaurant Name": "Madre",
+    "City": "Amsterdam",
+    "Address": "Westerstraat 186",
+    "Latitude": 52.37838606,
+    "Longitude": 4.8816612,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Marres Kitchen",
+    "City": "Maastricht",
+    "Address": "Capucijnenstraat 98",
+    "Latitude": 50.85190456,
+    "Longitude": 5.68597395,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Belgisch Biercafe Eindhoven",
+    "City": "Eindhoven",
+    "Address": "Stratumseind 95",
+    "Latitude": 51.43584733,
+    "Longitude": 5.48316427,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Hotel Restaurant Frenchie",
+    "City": "Haarlem",
+    "Address": "Gedempte Oude Gracht 46",
+    "Latitude": 52.38105925,
+    "Longitude": 4.63204158,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "The Florin",
+    "City": "Utrecht",
+    "Address": "Nobelstraat 2",
+    "Latitude": 52.09337851,
+    "Longitude": 5.12406495,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Cafe Cook",
+    "City": "Amsterdam",
+    "Address": "James Cookstraat 2",
+    "Latitude": 52.37140748,
+    "Longitude": 4.85258168,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Club Puck",
+    "City": "Amsterdam",
+    "Address": "Jan Evertsenstraat 747",
+    "Latitude": 52.36978808,
+    "Longitude": 4.835783,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "De Biertuin Mercatorplein",
+    "City": "Amsterdam",
+    "Address": "Jan Evertsenstraat 135",
+    "Latitude": 52.37022408,
+    "Longitude": 4.85149668,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Café-Restaurant De Plantage",
+    "City": "Amsterdam",
+    "Address": "Plantage Kerklaan 36",
+    "Latitude": 52.36684944,
+    "Longitude": 4.9124772,
+    "Tap Water Policy": "Yes, at reasonable cost",
+    "Comments": "€0.95 for a chilled carafe"
+  },
+  {
+    "Restaurant Name": "De Oranjerie",
+    "City": "Amsterdam",
+    "Address": "Plantage Middenlaan 2A",
+    "Latitude": 52.36711649,
+    "Longitude": 4.90745784,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Spirit",
+    "City": "Amsterdam",
+    "Address": "Czaar Peterstraat 2A",
+    "Latitude": 52.36781179,
+    "Longitude": 4.92595888,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "De jonge admiraal",
+    "City": "Amsterdam",
+    "Address": "Javastraat 149",
+    "Latitude": 52.3640871,
+    "Longitude": 4.93829291,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Studio/K",
+    "City": "Amsterdam",
+    "Address": "Timorplein 62",
+    "Latitude": 52.36536695,
+    "Longitude": 4.93598428,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "FC Hyena",
+    "City": "Amsterdam",
+    "Address": "Aambeeldstraat 24",
+    "Latitude": 52.38354324,
+    "Longitude": 4.92906873,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Paon Bali",
+    "City": "Amsterdam",
+    "Address": "Levantplein 84",
+    "Latitude": 52.37706946,
+    "Longitude": 4.9433835,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Hotel Arena",
+    "City": "Amsterdam",
+    "Address": "'s-Gravesandestraat 55",
+    "Latitude": 52.36108901,
+    "Longitude": 4.91636838,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Motion Coffee",
+    "City": "Amsterdam",
+    "Address": "Eerste Van Swindenstraat 547",
+    "Latitude": 52.3635118,
+    "Longitude": 4.93003054,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Kaffee",
+    "City": "Amsterdam",
+    "Address": "Dapperplein 45",
+    "Latitude": 52.36402694,
+    "Longitude": 4.92820824,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Wakuli",
+    "City": "Amsterdam",
+    "Address": "Linnaeusstraat 237a",
+    "Latitude": 52.35856144,
+    "Longitude": 4.9273499,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Oude Doelenstraat 11",
+    "Latitude": 52.37399348,
+    "Longitude": 4.89655789,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Bloem Eten & Drinken",
+    "City": "Amsterdam",
+    "Address": "Entrepotdok 36",
+    "Latitude": 52.36898048,
+    "Longitude": 4.91419332,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "L'Abeille Pastry & Coffee",
+    "City": "Amsterdam",
+    "Address": "Dapperstraat 7",
+    "Latitude": 52.36529145,
+    "Longitude": 4.9262152,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "my little patisserie",
+    "City": "Amsterdam",
+    "Address": "Eerste van der Helststraat 63 HS",
+    "Latitude": 52.35486187,
+    "Longitude": 4.89368422,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "the meets",
+    "City": "Amsterdam",
+    "Address": "Sumatrastraat 28",
+    "Latitude": 52.3642758,
+    "Longitude": 4.93519155,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Di Luca",
+    "City": "Amsterdam",
+    "Address": "Spijkerkade 31",
+    "Latitude": 52.38482423,
+    "Longitude": 4.92145634,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "€6 for a bottle of water and pizza is bloody expensive"
+  },
+  {
+    "Restaurant Name": "Markerhuisje",
+    "City": "Amsterdam",
+    "Address": "Tweede Wittenburgerdwarsstraat 133",
+    "Latitude": 52.37161123,
+    "Longitude": 4.92227611,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Bar Bachrach",
+    "City": "Amsterdam",
+    "Address": "Javaplein 25",
+    "Latitude": 52.36367461,
+    "Longitude": 4.94045774,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "4-5 euro for a tiny bottle that they almost force upon you on sitting down without telling you they're going to charge you for it"
+  },
+  {
+    "Restaurant Name": "Iets Aparts",
+    "City": "Amsterdam",
+    "Address": "Postjesweg 122-H",
+    "Latitude": 52.364546,
+    "Longitude": 4.85145064,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Café restaurant Floor",
+    "City": "Rotterdam",
+    "Address": "Schouwburgplein 28",
+    "Latitude": 51.92032645,
+    "Longitude": 4.4743699,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Margherita Tutta La Vita",
+    "City": "Diemen",
+    "Address": "Dalsteindreef 2040",
+    "Latitude": 52.32917475,
+    "Longitude": 4.95597898,
+    "Tap Water Policy": "Yes, at reasonable cost",
+    "Comments": "Free tap water if at least one drink is ordered"
+  },
+  {
+    "Restaurant Name": "Box Sociaal",
+    "City": "Amsterdam",
+    "Address": "Plantage Middenlaan 30A",
+    "Latitude": 52.36635969,
+    "Longitude": 4.91183821,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Takumi",
+    "City": "Den Haag",
+    "Address": "Herengracht 12A",
+    "Latitude": 52.08086991,
+    "Longitude": 4.3183862,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Takumi",
+    "City": "Eindhoven",
+    "Address": "Kerkstraat 26",
+    "Latitude": 51.43733793,
+    "Longitude": 5.47872092,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Takumi",
+    "City": "Rotterdam",
+    "Address": "West-Kruiskade 9B",
+    "Latitude": 51.92095721,
+    "Longitude": 4.47027083,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Takumi",
+    "City": "Rotterdam",
+    "Address": "William Boothlaan 7A",
+    "Latitude": 51.91590251,
+    "Longitude": 4.4783342,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Takumi",
+    "City": "Rotterdam",
+    "Address": "Grotemarkt 186",
+    "Latitude": 51.92039751,
+    "Longitude": 4.48653317,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Takumi",
+    "City": "Utrecht",
+    "Address": "Oudegracht 148",
+    "Latitude": 52.09192431,
+    "Longitude": 5.11798996,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Takumi",
+    "City": "Eindhoven",
+    "Address": "Nieuwstraat 20",
+    "Latitude": 51.44041432,
+    "Longitude": 5.47898914,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Wakuli",
+    "City": "Amsterdam",
+    "Address": "Haarlemmerplein 43",
+    "Latitude": 52.38710587,
+    "Longitude": 4.88145172,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Wakuli",
+    "City": "Amsterdam",
+    "Address": "Wagenaarstraat 70H",
+    "Latitude": 52.36495602,
+    "Longitude": 4.92683492,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Wakuli",
+    "City": "Amsterdam",
+    "Address": "Van Woustraat 54",
+    "Latitude": 52.35786565,
+    "Longitude": 4.89981949,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Wakuli",
+    "City": "Amsterdam",
+    "Address": "Amstelveenseweg 210",
+    "Latitude": 52.35409131,
+    "Longitude": 4.85501587,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Wakuli",
+    "City": "Amsterdam",
+    "Address": "Jan Pieter Heijestraat 76",
+    "Latitude": 52.36583264,
+    "Longitude": 4.86291229,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Wakuli",
+    "City": "Amsterdam",
+    "Address": "Vijzelgracht 37",
+    "Latitude": 52.36264988,
+    "Longitude": 4.89044271,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Wakuli",
+    "City": "Amsterdam",
+    "Address": "Tweede Jacob van Campenstraat 1",
+    "Latitude": 52.35954303,
+    "Longitude": 4.89243805,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Ferdinand Bolstraat 38",
+    "Latitude": 52.35858518,
+    "Longitude": 4.88969143,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Scheldestraat 37",
+    "Latitude": 52.34903509,
+    "Longitude": 4.89265769,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Javaplein 14",
+    "Latitude": 52.36600648,
+    "Longitude": 4.93888377,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Haarlemmerdijk 62",
+    "Latitude": 52.38426269,
+    "Longitude": 4.88831814,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Oosterdokskade 137",
+    "Latitude": 52.37755654,
+    "Longitude": 4.90685757,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Wibautstraat 7",
+    "Latitude": 52.35959722,
+    "Longitude": 4.9097996,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Middenweg 32",
+    "Latitude": 52.3562424,
+    "Longitude": 4.92902567,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Beethovenstraat 84",
+    "Latitude": 52.34967842,
+    "Longitude": 4.87751187,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Van Woustraat 153",
+    "Latitude": 52.35544522,
+    "Longitude": 4.90257443,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Kinkerstraat 330-332",
+    "Latitude": 52.36771027,
+    "Longitude": 4.86171903,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Termini 173",
+    "Latitude": 52.40353861,
+    "Longitude": 4.93310269,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Bos en Lommerplein 116",
+    "Latitude": 52.3813282,
+    "Longitude": 4.84667122,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Van Woustraat 92",
+    "Latitude": 52.35637464,
+    "Longitude": 4.90038245,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Plantage Muidergracht 69-71",
+    "Latitude": 52.36748648,
+    "Longitude": 4.9117121,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Mr.Treublaan 18",
+    "Latitude": 52.34987396,
+    "Longitude": 4.91325705,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Coffee Company",
+    "City": "Amsterdam",
+    "Address": "Berenstraat 6",
+    "Latitude": 52.37199332,
+    "Longitude": 4.88338797,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Cannibale Royale",
+    "City": "Amsterdam",
+    "Address": "Handboogstraat 17a",
+    "Latitude": 52.36888381,
+    "Longitude": 4.8903418,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Atchaya",
+    "City": "Amstelveen",
+    "Address": "Amsterdamseweg 503",
+    "Latitude": 52.32010497,
+    "Longitude": 4.85702318,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "They have evian bottles on the table, even with a big order when we asked for tap water it was declined."
+  },
+  {
+    "Restaurant Name": "Café Mulder",
+    "City": "Amsterdam",
+    "Address": "Weteringschans 163",
+    "Latitude": 52.35985226,
+    "Longitude": 4.89123725,
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "Apart from being super bad/rude at service we were there all evening and when asked for tap water they made fun of us"
+  },
+  {
+    "Restaurant Name": "Cannibale Royale",
+    "City": "Amsterdam",
+    "Address": "Amstelveenseweg 170 B-H",
+    "Latitude": 52.35409539,
+    "Longitude": 4.85563784,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Cannibale Royale",
+    "City": "Amsterdam",
+    "Address": "Mt. Ondinaweg 32",
+    "Latitude": 52.40121707,
+    "Longitude": 4.8925073,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Cannibale Royale",
+    "City": "Amsterdam",
+    "Address": "Rozengracht 114",
+    "Latitude": 52.3741241,
+    "Longitude": 4.87935547,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Cannibale Royale",
+    "City": "Amsterdam",
+    "Address": "Ruysdaelkade 149",
+    "Latitude": 52.35483674,
+    "Longitude": 4.88708023,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Cannibale Royale",
+    "City": "Amsterdam",
+    "Address": "Lange Niezel 15",
+    "Latitude": 52.37622005,
+    "Longitude": 4.89840988,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
   }
 ]
