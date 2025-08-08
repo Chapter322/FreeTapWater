@@ -1,25 +1,18 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Discover restaurants that offer free tap water!</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Playfair+Display:700,400|Roboto:400,300"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
-    <style>
+<meta charset="utf-8"/>
+<title>Discover restaurants that offer free tap water!</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<style>
         /* Basic styles and typography */
         body {
             margin: 0;
             background: linear-gradient(135deg, #def2ea 0%, #d3dbf7 100%);
-            font-family: 'Roboto', Arial, sans-serif;
+            font-family: Arial, sans-serif, Arial, sans-serif;
         }
         .header {
             background: rgba(255,255,255,0.6);
@@ -31,7 +24,7 @@
             text-align: center;
         }
         .header h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: serif, serif;
             font-size: 2.8em;
             font-weight: 700;
             color: #2b2e3a;
@@ -50,7 +43,7 @@
             box-shadow: 0 1px 6px rgba(0,0,0,0.04);
         }
         .section h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: serif, serif;
             font-size: 1.7em;
             margin: 0 0 10px 0;
             color: #3d4049;
@@ -193,67 +186,153 @@
             margin-right: 8px;
             flex-shrink: 0;
         }
+		
+		/* Accordion container */
+		.accordion {
+		background: rgba(255,255,255,0.6);
+		border-radius: 12px;
+		margin: 12px 0;
+		padding: 0;
+		max-width: 900px;
+		box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+		}
+		
+		/* Accordion header */
+		.accordion-header {
+		cursor: pointer;
+		font-family: serif, serif;
+		font-size: 1.5em;
+		padding: 12px 24px;
+		font-weight: 600;
+		border-bottom: 1px solid #ccc;
+		user-select: none;
+		}
+		
+		/* Accordion content collapsed */
+		.accordion-content {
+		padding: 0 24px 16px 24px;
+		font-size: 1em;
+		color: #5c5f6b;
+		line-height: 1.5;
+		display: none;
+		}
+		
+		/* Accordion content expanded */
+		.accordion.active .accordion-content {
+		display: block;
+		}
+		  
+		/* Summary text visible when collapsed */
+		.accordion-summary {
+		padding: 12px 24px;
+		font-size: 1em;
+		color: #5c5f6b;
+		line-height: 1.4;
+		}
+		
+		/* Contact link styling */
+		.contact-link {
+		display: inline-block;
+		margin: 16px auto 32px auto;
+		font-weight: 600;
+		color: #3366cc;
+		cursor: pointer;
+		text-decoration: underline;
+		text-align: center;
+		}
     </style>
-</head>
+<style>
+.main-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 4px;
+}
+.accordion-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.chevron {
+    transition: transform 0.3s ease;
+}
+.accordion-content {
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+.accordion-content.expanded {
+    max-height: 500px;
+}
+.chevron.rotate {
+    transform: rotate(90deg);
+}
+</style></head>
 <body>
-    <!-- Header section -->
-    <div class="header">
-        <h1>Discover restaurants that offer free tap water!</h1>
-    </div>
-
-    <!-- Informational text container -->
-    <div class="container">
-        <div class="section intro">
-            <p>
-                In the Netherlands, it's common for restaurants and cafés to charge exorbitant prices for bottled water. This practice often leads to frustration among clients who feel compelled to pay for something that should be freely available. Our initiative aims to highlight establishments that offer tap water at no or minimal cost, promoting transparency and encouraging others to adopt similar practices.
-            </p>
-        </div>
-        <div class="section objective">
-            <h2>Objective</h2>
-            <p>
-                Our goal is to create a collaborative database of restaurants and cafés that provide free or reasonably priced tap water. By showcasing these establishments, we hope to inspire others to follow suit and foster a culture of fairness and sustainability in the hospitality industry.
-            </p>
-        </div>
-        <div class="section help">
-            <h2>How You Can Help</h2>
-            <p>
-                If you know of a restaurant or café that offers free or affordable tap water, please share their details with us. Your contributions will help expand our database and promote positive change in the industry. Together, we can make a difference and encourage more businesses to adopt transparent and fair practices.
-            </p>
-        </div>
-
-        <!-- Share details button with spacing -->
-        <div class="btn-wrap">
-            <button class="share-btn" onclick="openModal()">Share Details</button>
-        </div>
-    </div>
-
-    <!-- Counters bar fixed above the map -->
-    <div id="category-counters">
-        <span style="color: red;">High Price: <span id="counter-red">0</span></span>
-        <span style="color: orange;">Reasonable Cost: <span id="counter-yellow">0</span></span>
-        <span style="color: green;">Free: <span id="counter-green">0</span></span>
-    </div>
-
-    <!-- Map container -->
-    <div class="map-wrap">
-        <div id="map"></div>
-    </div>
-
-    <!-- Modal window for form submission -->
-    <div id="modal">
-        <div id="modal-content">
-            <button id="modal-close" onclick="closeModal()">&times;</button>
-            <iframe id="modal-iframe" src="https://app.youform.com/forms/ubbqidvt"></iframe>
-        </div>
-    </div>
-
-    <!-- Leaflet.js library -->
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
-    <script>
+<!-- Header section -->
+<div class="header">
+<h1>Discover restaurants that offer free tap water!</h1>
+</div>
+<!-- Informational text container -->
+<div class="container">
+<div class="accordion" id="intro-accordion">
+<div class="accordion-header">Introduction<span class="chevron">&gt;</span></div>
+<div class="accordion-summary">
+				In the Netherlands, many restaurants charge high prices for bottled water, causing frustration. We highlight those offering free or cheap tap water.
+			</div>
+<div class="accordion-content">
+				In the Netherlands, it's common for restaurants and cafés to charge exorbitant prices for bottled water. This practice often leads to frustration among clients who feel compelled to pay for something that should be freely available. Our initiative aims to highlight establishments that offer tap water at no or minimal cost, promoting transparency and encouraging others to adopt similar practices.
+			</div>
+</div>
+<div class="accordion" id="objective-accordion">
+<div class="accordion-header">Objective<span class="chevron">&gt;</span></div>
+<div class="accordion-summary">
+				We aim to build a database of restaurants offering free or reasonably priced tap water, promoting fairness and sustainability.
+			</div>
+<div class="accordion-content">
+				Our goal is to create a collaborative database of restaurants and cafés that provide free or reasonably priced tap water. By showcasing these establishments, we hope to inspire others to follow suit and foster a culture of fairness and sustainability in the hospitality industry.
+			</div>
+</div>
+<div class="accordion" id="help-accordion">
+<div class="accordion-header">How You Can Help<span class="chevron">&gt;</span></div>
+<div class="accordion-summary">
+				Share details of restaurants offering affordable or free tap water to help expand our database and foster change.
+			</div>
+<div class="accordion-content">
+				If you know of a restaurant or café that offers free or affordable tap water, please share their details with us. Your contributions will help expand our database and promote positive change in the industry. Together, we can make a difference and encourage more businesses to adopt transparent and fair practices.
+			</div>
+</div>
+<!-- Share details button with spacing -->
+<div class="btn-wrap">
+<button class="share-btn" onclick="openModal()">Share Details</button>
+</div>
+<!-- Contact link for restaurants to confirm or correct info -->
+<div style="text-align: center;">
+<a class="contact-link" href="mailto:contact.danatec@gmail.com?subject=Tap Water Info Confirmation" rel="noopener noreferrer" target="_blank">
+				Restaurant owner? Confirm or correct your listing here.
+			</a>
+</div>
+</div>
+<!-- Counters bar fixed above the map -->
+<div id="category-counters">
+<span style="color: red;">High Price: <span id="counter-red">0</span></span>
+<span style="color: orange;">Reasonable Cost: <span id="counter-yellow">0</span></span>
+<span style="color: green;">Free: <span id="counter-green">0</span></span>
+</div>
+<!-- Map container -->
+<div class="map-wrap">
+<div id="map"></div>
+</div>
+<!-- Modal window for form submission -->
+<div id="modal">
+<div id="modal-content">
+<button id="modal-close" onclick="closeModal()">×</button>
+<iframe id="modal-iframe" src="https://app.youform.com/forms/ubbqidvt"></iframe>
+</div>
+</div>
+<!-- Leaflet.js library -->
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
         // Modal open/close handlers
         function openModal() {
             document.getElementById("modal").style.display = "flex";
@@ -413,5 +492,31 @@
                 alert("Restaurants layer can't be loaded");
             });
     </script>
+<!-- Add script to toggle accordion -->
+<script>
+		document.querySelectorAll('.accordion-header').forEach(header => {
+			header.addEventListener('click', () => {
+				const accordion = header.parentElement;
+				accordion.classList.toggle('active');
+			});
+		});
+	</script>
+<script>
+document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        const chevron = header.querySelector('.chevron');
+        content.classList.toggle('expanded');
+        chevron.classList.toggle('rotate');
+    });
+});
+</script>
+<footer style="text-align:center; margin-top:20px; font-size:0.85em; color:#555;">
+    <p>
+        <a href="privacy.html" target="_blank" style="color:inherit; text-decoration:underline;">
+            Privacy Policy
+        </a>
+    </p>
+</footer>
 </body>
 </html>
