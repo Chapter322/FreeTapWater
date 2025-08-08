@@ -205,5 +205,32 @@
     "Longitude": 4.88895612,
     "Tap Water Policy": "Yes, for free",
     "Comments": ""
+  },
+  {
+    "Restaurant Name": "IJssalon IJs & Zo",
+    "City": "Leidschendam",
+    "Address": "Sluisplein 4",
+    "Latitude": 52.08007921,
+    "Longitude": 4.39836592,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Hop & Stork",
+    "City": "Den Haag",
+    "Address": "Passage 82",
+    "Latitude": 52.07907569,
+    "Longitude": 4.31204833,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Passion Ethiopian Coffee",
+    "City": "Den Haag",
+    "Address": "Noordeinde 166",
+    "Latitude": 52.0832218,
+    "Longitude": 4.30482304,
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
   }
 ]
