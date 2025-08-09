@@ -677,7 +677,10 @@
         }).addTo(elements.map);
 
         elements.markerClusterGroup = L.markerClusterGroup({
-            iconCreateFunction: createClusterIcon
+            iconCreateFunction: createClusterIcon,
+            spiderfyOnMaxZoom: true,
+            disableClusteringAtZoom: 18,
+            maxClusterRadius: 60
         });
         elements.map.addLayer(elements.markerClusterGroup);
     }
@@ -749,6 +752,10 @@
     }
 
     function processData(data) {
+        // Reset markers and counters
+        state.allMarkers = [];
+        state.countsTotal = { "Free": 0, "Reasonable cost": 0, "Mineral water or high price": 0 };
+
         const cities = Array.from(new Set(data.map(d => d.City))).sort();
         data.forEach(item => createMarker(item));
         buildFilterUI(cities);
@@ -770,6 +777,13 @@
         const category = getCategory(item["Tap Water Policy"]);
         state.countsTotal[category]++;
         
+        // Check for existing marker at same location
+        const existingMarker = state.allMarkers.find(m => 
+            m.marker.getLatLng().lat === item.Latitude && 
+            m.marker.getLatLng().lng === item.Longitude
+        );
+        if (existingMarker) return;
+
         const marker = L.marker([item.Latitude, item.Longitude], {
             icon: getColoredIcon(category),
             category: category,
@@ -779,7 +793,6 @@
             }
         });
 
-        // Función helper para emojis de política de agua
         const getWaterPolicyEmoji = (policy) => {
             switch(policy) {
                 case "Yes, for free": return "🟢";
@@ -789,7 +802,6 @@
             }
         };
 
-        // Función para formatear el texto de la política
         const formatPolicyText = (policy) => {
             const policyTexts = {
                 "Yes, for free": "Free tap water",
@@ -921,16 +933,18 @@
     function applyFilters() {
         const cityFilter = document.getElementById('city-filter').value;
         
+        // Clear existing markers
         elements.markerClusterGroup.clearLayers();
         resetFilteredCounts();
 
-        const filteredMarkers = state.allMarkers.filter(({data}) => {
+        const filteredMarkers = state.allMarkers.filter(({ data }) => {
             const cat = data.category;
             const cityMatch = cityFilter === 'all' || data.city === cityFilter;
             return state.filterState[cat] && cityMatch;
         });
 
-        filteredMarkers.forEach(({marker, data}) => {
+        // Add filtered markers
+        filteredMarkers.forEach(({ marker, data }) => {
             elements.markerClusterGroup.addLayer(marker);
             state.countsFiltered[data.category]++;
         });
@@ -985,5 +999,3 @@
 </footer>
 </body>
 </html>
-
-
