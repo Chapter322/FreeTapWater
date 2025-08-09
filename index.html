@@ -6,12 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Find restaurants in the Netherlands that offer free or fairly priced tap water">
 
-<link rel="preconnect" href="https://unpkg.com">
-<link rel="preconnect" href="https://app.youform.com">
-<link rel="preload" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" as="style" crossorigin="anonymous">
-<link rel="preload" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" as="script">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
+<!-- Favicon relacionado con agua del grifo -->
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5882/5882900.png" type="image/png">
+
+<!-- Hojas de estilo -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
 <style>
     :root {
         --bg-color: linear-gradient(135deg, #def2ea 0%, #d3dbf7 100%);
@@ -564,11 +566,9 @@
     </div>
 </div>
 
-<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
-<script defer src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
-
+<!-- Scripts al final del body para mejor rendimiento -->
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script>
 (function() {
     'use strict';
