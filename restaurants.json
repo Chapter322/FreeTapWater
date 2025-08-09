@@ -99,15 +99,6 @@
     "Comments": "No tap water is offered at all"
   },
   {
-    "Restaurant Name": "Pizzeria Di Luca",
-    "City": "Amsterdam",
-    "Address": "Spijkerkade 31",
-    "Latitude": 52.38478494,
-    "Longitude": 4.92149926,
-    "Tap Water Policy": "No, they charge high price",
-    "Comments": ""
-  },
-  {
     "Restaurant Name": "Madre",
     "City": "Amsterdam",
     "Address": "Westerstraat 186",
@@ -333,7 +324,7 @@
     "Comments": ""
   },
   {
-    "Restaurant Name": "Di Luca",
+    "Restaurant Name": "pizzeria Di Luca",
     "City": "Amsterdam",
     "Address": "Spijkerkade 31",
     "Latitude": 52.38482423,
