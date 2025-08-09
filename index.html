@@ -1,265 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8">
 <title>Discover restaurants with fairly priced tap water!</title>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Find restaurants in the Netherlands that offer free or fairly priced tap water">
 
-<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="preconnect" href="https://app.youform.com">
+<link rel="preload" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" as="style" crossorigin="anonymous">
+<link rel="preload" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" as="script">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
 <style>
+    :root {
+        --bg-color: linear-gradient(135deg, #def2ea 0%, #d3dbf7 100%);
+        --card-bg: rgba(255,255,255,0.6);
+        --text-color: #2b2e3a;
+        --secondary-text: #5c5f6b;
+        --shadow-color: rgba(0,0,0,0.06);
+        --content-width: 1000px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: linear-gradient(135deg, #1a2a3a 0%, #0f1a2a 100%);
+            --card-bg: rgba(30, 40, 50, 0.8);
+            --text-color: #f0f0f0;
+            --secondary-text: #ccc;
+            --shadow-color: rgba(0,0,0,0.2);
+        }
+        
+        .header h1, .section h2 {
+            color: var(--text-color);
+        }
+        
+        .section p {
+            color: var(--secondary-text);
+        }
+        
+        #city-filter {
+            background-color: #2d3a44;
+            color: #eee;
+            border-color: #444;
+        }
+    }
+
     body {
         margin: 0;
-        background: linear-gradient(135deg, #def2ea 0%, #d3dbf7 100%);
+        background: var(--bg-color);
         font-family: Arial, sans-serif;
+        color: var(--text-color);
+        transition: background 0.3s ease;
     }
+
     .header {
-        background: rgba(255,255,255,0.6);
-        margin: 32px auto 0 auto;
-        border-radius: 24px;
-        max-width: 1300px;
-        box-shadow: 0 2px 14px rgba(0,0,0,0.06);
-        padding: 32px 0 24px 0;
+        background: var(--card-bg);
+        margin: 20px auto 0;
+        border-radius: 18px;
+        max-width: var(--content-width);
+        box-shadow: 0 2px 10px var(--shadow-color);
+        padding: 20px 0;
         text-align: center;
     }
+
     .header h1 {
         font-family: serif;
-        font-size: 2.8em;
+        font-size: 2.4em;
         font-weight: 700;
-        color: #2b2e3a;
         margin: 0;
-        letter-spacing: 1px;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
     }
+
     .container {
-        max-width: 1300px;
+        max-width: var(--content-width);
         margin: 0 auto;
         padding: 0 16px;
     }
+
     .section {
-        background: rgba(255,255,255,0.6);
-        margin-top: 18px;
-        border-radius: 10px;
-        padding: 24px 32px;
-        box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+        background: var(--card-bg);
+        margin-top: 14px;
+        border-radius: 8px;
+        padding: 16px 20px;
+        box-shadow: 0 1px 4px var(--shadow-color);
     }
+
     .section h2 {
         font-family: serif;
-        font-size: 1.7em;
-        margin: 0 0 10px 0;
-        color: #3d4049;
+        font-size: 1.5em;
+        margin: 0 0 6px;
         font-weight: 400;
     }
+
     .section p {
-        font-size: 1.13em;
-        color: #5c5f6b;
+        font-size: 1.05em;
+        color: var(--secondary-text);
         margin: 0;
-        line-height: 1.6;
+        line-height: 1.5;
     }
+
     .btn-wrap {
         text-align: center;
-        margin: 32px 0 16px 0;
+        margin: 24px 0 12px;
     }
+
     .share-btn {
         background: #b2c8f6;
         color: #333;
-        font-size: 1.3em;
+        font-size: 1.2em;
         font-weight: 500;
         border: none;
-        border-radius: 24px;
-        padding: 18px 48px;
+        border-radius: 20px;
+        padding: 14px 36px;
         cursor: pointer;
-        box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+        box-shadow: 0 1px 6px var(--shadow-color);
         transition: background 0.2s;
     }
+
     .share-btn:hover {
         background: #91b7ef;
     }
+
+    .geo-btn {
+        background: #a0d6b4;
+        color: #333;
+        font-size: 0.95em;
+        font-weight: 500;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+        box-shadow: 0 1px 6px var(--shadow-color);
+        transition: background 0.2s;
+        margin-bottom: 10px;
+    }
+
+    .geo-btn:hover {
+        background: #7cc096;
+    }
+
     #modal {
         display: none;
         position: fixed;
         z-index: 2000;
-        left: 0; top: 0;
-        width: 100vw; height: 100vh;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
         background: rgba(50,60,90,0.45);
         align-items: center;
         justify-content: center;
     }
+
     #modal-content {
-        background: #fff;
-        border-radius: 16px;
+        background: var(--card-bg);
+        border-radius: 14px;
         max-width: 560px;
         width: 90vw;
-        box-shadow: 0 2px 18px rgba(0,0,0,0.18);
+        box-shadow: 0 2px 16px var(--shadow-color);
         position: relative;
         padding: 0;
     }
+
     #modal-close {
         position: absolute;
-        right: 18px; top: 10px;
-        font-size: 2em;
+        right: 16px;
+        top: 8px;
+        font-size: 1.8em;
         color: #bbb;
         background: none;
         border: none;
         cursor: pointer;
         z-index: 10;
     }
+
     #modal-iframe {
         width: 100%;
-        height: 600px;
+        height: 560px;
         border: none;
-        border-radius: 0 0 16px 16px;
+        border-radius: 0 0 14px 14px;
     }
 
     .map-filter-wrapper {
-        max-width: 1000px;
-        margin: 10px auto 40px auto;
+        max-width: var(--content-width);
+        margin: 8px auto 30px;
         padding: 0 16px;
         box-sizing: border-box;
+        width: 100%;
     }
-    .map-wrap {
-        max-width: 100%;
-        margin: 0;
-        border-radius: 12px;
-        overflow: hidden;
-        box-sizing: border-box;
-        box-shadow: 0 1px 12px rgba(0,0,0,0.08);
-    }   
-    .info.legend {
-        background: white;
-        padding: 10px 12px;
+
+    .filter-container {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 12px;
+        background: transparent;
+        padding: 0;
+        box-shadow: none;
+        width: 100%;
+    }
+
+    #Category-Filters {
+        flex: 2;
+        background: rgba(255,255,255,0.6);
         border-radius: 6px;
-        box-sizing: border-box;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        font-size: 14px;
-        line-height: 18px;
-        color: #333;
+        padding: 8px 12px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
         display: flex;
         flex-wrap: wrap;
-        gap: 16px;
-        align-items: center;
+    }
+
+    #City-Filter {
+        flex: 1;
+        background: rgba(255,255,255,0.6);
+        border-radius: 6px;
+        padding: 8px 12px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        min-width: 180px;
+    }
+
+    #Filtered-Counters {
+        width: 100%;
+        max-width:100%;
+        background: rgba(255,255,255,0.6);
+        border-radius: 6px;
+        padding: 8px 12px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        margin-bottom: 12px;
         justify-content: center;
-        max-width: 100%;
-        margin: 0 0 12px 0;
-        user-select: none;
-    }   
+        box-sizing: border-box;
+    }
+
+    .map-wrap {
+        width: 100%;
+        margin: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-sizing: border-box;
+        box-shadow: 0 1px 10px var(--shadow-color);
+    }
+
     #map {
         width: 100%;
-        height: 420px;
+        height: 400px;
         border: none;
     }
-    @media (max-width: 700px) {
-        .header, .container, .map-wrap {
-            max-width: 98vw;
-        }
-        .section {
-            padding: 20px 10px;
-        }
-        #map {
-            height: 260px;
-        }
-        #modal-iframe {
-            height: 400px;
-        }
-        .legend-filter-row {
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+
+    .popup-content {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    .popup-content a {
+        color: #3498db;
+        text-decoration: none;
+    }
+    .popup-content a:hover {
+        text-decoration: underline;
     }
     .popup-content div {
         margin-bottom: 6px;
     }
+
+    .info.legend {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        font-size: 13px;
+        line-height: 16px;
+        color: var(--text-color);
+        user-select: none;
+    }
+
     .info.legend label {
         display: flex;
         align-items: center;
         cursor: pointer;
         transition: opacity 0.3s;
         font-weight: 600;
+        margin: 3px 6px 3px 0;
     }
+
     .info.legend label input[type="checkbox"] {
-        margin-right: 6px;
+        margin-right: 5px;
         cursor: pointer;
+        width: 14px;
+        height: 14px;
+    }
+
+    .legend-color-box {
         width: 16px;
         height: 16px;
-    }
-    .legend-color-box {
-        width: 18px;
-        height: 18px;
         border-radius: 3px;
-        margin-right: 8px;
+        margin-right: 6px;
         flex-shrink: 0;
     }
+
     #city-filter {
-        font-size: 1em;
-        padding: 6px 10px;
-        border-radius: 6px;
+        font-size: 0.95em;
+        padding: 5px 8px;
+        border-radius: 5px;
         border: 1px solid #ccc;
         cursor: pointer;
-        min-width: 180px;
+        min-width: 160px;
         font-weight: 600;
     }
+
     #category-counters-filtered {
         font-family: Arial, sans-serif;
         font-weight: 700;
-        font-size: 1.05em;
-        color: #2b2e3a;
-        margin-left: 12px;
+        font-size: 1em;
         white-space: nowrap;
     }
+
     #totals-global {
-        max-width: 1300px;
-        margin: 24px auto 40px auto;
+        max-width: var(--content-width);
+        margin: 18px auto 30px;
         text-align: center;
         font-family: Arial, sans-serif;
         font-weight: 700;
-        font-size: 1.1em;
-        color: #444;
+        font-size: 1.05em;
     }
+
     .accordion {
-        background: rgba(255,255,255,0.6);
-        border-radius: 12px;
-        margin: 12px 0;
+        background: var(--card-bg);
+        border-radius: 10px;
+        margin: 10px 0;
         padding: 0;
-        max-width: 1300px;
-        box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+        max-width: var(--content-width);
+        box-shadow: 0 1px 6px var(--shadow-color);
     }
+
     .accordion-header {
         cursor: pointer;
         font-family: serif;
-        font-size: 1.5em;
-        padding: 12px 24px;
+        font-size: 1.4em;
+        padding: 10px 18px;
         font-weight: 600;
         user-select: none;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
+
     .chevron {
         transition: transform 0.3s ease;
     }
+
     .accordion-summary {
-        padding: 12px 24px;
-        font-size: 1em;
-        color: #5c5f6b;
+        padding: 8px 18px;
+        font-size: 0.95em;
+        color: var(--secondary-text);
         line-height: 1.4;
     }
+
     .accordion-content {
-        padding: 12px 24px 16px 24px;
-        font-size: 1em;
-        color: #5c5f6b;
+        padding: 8px 18px 12px;
+        font-size: 0.95em;
+        color: var(--secondary-text);
         line-height: 1.5;
         display: none;
     }
+
     .accordion.active .accordion-summary {
         display: none;
     }
+
     .accordion.active .accordion-content {
         display: block;
     }
+
     .chevron.rotate {
         transform: rotate(90deg);
     }
+
     .contact-link {
         display: inline-block;
-        margin: 16px auto 8px auto;
+        margin: 12px auto 6px;
         font-weight: 600;
         color: #3366cc;
         cursor: pointer;
@@ -267,40 +384,121 @@
         text-align: center;
     }
 
-    /* MODIFICADO: CSS para cluster con color dominante */
     .custom-cluster-icon {
         border-radius: 50%;
         color: white;
         font-weight: bold;
         text-align: center;
-        line-height: 40px;
+        line-height: 36px;
         border: 2px solid white;
-        box-shadow: 0 0 5px rgba(0,0,0,0.3);
-        font-size: 1.2em;
+        box-shadow: 0 0 4px rgba(0,0,0,0.3);
+        font-size: 1.1em;
+        width: 36px;
+        height: 36px;
+    }
+
+    #loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,0.9);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    .spinner {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
         width: 40px;
         height: 40px;
+        animation: spin 1s linear infinite;
+        margin-bottom: 12px;
     }
-	#Filters, #Filtered-Counters {
-		width: 100%;
-		box-sizing: border-box;
-		box-shadow: none;
-		margin-top: 0;
-		margin-bottom: 0;
-		padding-top: 4px;
-		padding-bottom: 4px;
-	}
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        #Category-Filters,
+        #City-Filter,
+        #Filtered-Counters {
+            background: rgba(30,40,50,0.6);
+        }
+    }
+
+    @media (max-width: 700px) {
+        .header, .container, .map-wrap {
+            max-width: 98vw;
+        }
+        .header {
+            margin: 12px auto 0;
+            padding: 16px 0;
+        }
+        .header h1 {
+            font-size: 1.8em;
+        }
+        .section {
+            padding: 12px 14px;
+            margin-top: 10px;
+        }
+        .section h2 {
+            font-size: 1.3em;
+        }
+        #map {
+            height: 240px;
+        }
+        #modal-iframe {
+            height: 360px;
+        }
+        .share-btn {
+            padding: 12px 28px;
+            font-size: 1.1em;
+        }
+        .geo-btn {
+            padding: 8px 16px;
+            font-size: 0.85em;
+        }
+        .accordion-header {
+            font-size: 1.2em;
+            padding: 8px 14px;
+        }
+        .accordion-summary,
+        .accordion-content {
+            padding: 6px 14px 10px;
+            font-size: 0.9em;
+        }
+        .filter-container {
+            flex-direction: column;
+            gap: 8px;
+        }
+        #City-Filter {
+            min-width: 100%;
+        }
+    }
 </style>
 </head>
 <body>
+<div id="loading-overlay">
+    <div class="spinner"></div>
+    <p>Loading restaurant data...</p>
+</div>
+
 <div class="header">
     <h1>Discover restaurants with fairly priced tap water!</h1>
 </div>
 <div class="container">
-
     <div class="accordion" id="intro-accordion">
         <div class="accordion-header">Introduction<span class="chevron">&gt;</span></div>
         <div class="accordion-summary">
-            In the Netherlands, many restaurants charge high prices for bottled water, causing frustration. We highlight those offering free or fairly priced tap water.
+            Paying €3 for a glass of water? In the Netherlands, some restaurants overcharge for bottled water while others offer tap water fairly. We map them.
         </div>
         <div class="accordion-content">
             In the Netherlands, it's common for restaurants and cafés to charge exorbitant prices for bottled water. This practice often leads to frustration among clients who feel compelled to pay for something that should be freely available. Our initiative aims to highlight establishments that offer tap water at no or minimal cost, promoting transparency and encouraging others to adopt similar practices.
@@ -331,12 +529,11 @@
         <button class="share-btn" onclick="openModal()">Share Details</button>
     </div>
 
-    <div style="text-align: center;">
+    <div style="text-align:center">
         <a class="contact-link" href="mailto:contact.danatec@gmail.com?subject=Tap Water Info Confirmation" rel="noopener noreferrer" target="_blank">
             Restaurant owner? Confirm or correct your listing here.
         </a>
     </div>
-
 </div>
 
 <div id="totals-global" aria-live="polite" aria-atomic="true" role="region">
@@ -344,15 +541,16 @@
 </div>
 
 <div class="map-filter-wrapper">
-    <div class="info legend legend-filter-row" aria-label="Filters and categories" style="display:flex; gap:6px; justify-content: space-between; align-items: center;">
-		<div id="Filters" class="info legend legend-filter-row" aria-label="Filters" style="flex: 1 1 auto; white-space: nowrap; font-weight: 700; font-size: 1.05em; color: #2b2e3a;">
-            <!-- Legend checkboxes and city filter inserted dynamically -->
-        </div>
-		
-		<div id="Filtered-Counters" class="info legend legend-filter-row" aria-label="Filtered Counters" style="flex: 1 1 auto; white-space: nowrap; font-weight: 700; font-size: 1.05em; color: #2b2e3a;">
-            <!-- Filtered Counters inserted dynamically -->
-        </div>
+    <div style="text-align: center;">
+        <button id="geo-btn" class="geo-btn">📍 Find Near Me</button>
     </div>
+
+    <div class="filter-container">
+        <div id="Category-Filters" class="info legend" aria-label="Category Filters"></div>
+        <div id="City-Filter" class="info legend" aria-label="City Filter"></div>
+    </div>
+    
+    <div id="Filtered-Counters" class="info legend" aria-label="Filtered Counters"></div>
 
     <div class="map-wrap" aria-label="Map showing restaurants">
         <div id="map" tabindex="0" aria-live="polite" aria-atomic="true"></div>
@@ -362,51 +560,270 @@
 <div id="modal" aria-hidden="true">
     <div id="modal-content">
         <button id="modal-close" aria-label="Close form" onclick="closeModal()">×</button>
-        <iframe id="modal-iframe" src="https://app.youform.com/forms/ubbqidvt" title="Share restaurant details form"></iframe>
+        <iframe id="modal-iframe" src="https://app.youform.com/forms/ubbqidvt" title="Share restaurant details form" loading="lazy"></iframe>
     </div>
 </div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="></script>
-<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
 <script>
+(function() {
+    'use strict';
+    
+    const config = {
+        categories: ["Free", "Reasonable cost", "Mineral water or high price"],
+        colorMap: {
+            "Free": "green",
+            "Reasonable cost": "orange",
+            "Mineral water or high price": "red"
+        },
+        initialView: [52.37, 4.89],
+        initialZoom: 7,
+        defaultFilterState: {
+            "Free": true,
+            "Reasonable cost": true,
+            "Mineral water or high price": true
+        },
+        cacheTTL: 86400000
+    };
+
+    const elements = {
+        modal: document.getElementById('modal'),
+        map: null,
+        markerClusterGroup: null,
+        loadingOverlay: document.getElementById('loading-overlay'),
+        geoBtn: document.getElementById('geo-btn')
+    };
+
+    const state = {
+        countsTotal: { "Free": 0, "Reasonable cost": 0, "Mineral water or high price": 0 },
+        countsFiltered: { "Free": 0, "Reasonable cost": 0, "Mineral water or high price": 0 },
+        allMarkers: [],
+        filterState: {...config.defaultFilterState}
+    };
+
+    function init() {
+        state.filterState = loadFilterState();
+        setupModal();
+        setupAccordions();
+        loadMap();
+        setupGeolocation();
+        fetchData();
+    }
+
+    function setupModal() {
+        elements.modal.addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    }
+
     function openModal() {
-        document.getElementById("modal").style.display = "flex";
-        document.getElementById("modal").setAttribute("aria-hidden", "false");
+        elements.modal.style.display = "flex";
+        elements.modal.setAttribute("aria-hidden", "false");
     }
+
     function closeModal() {
-        document.getElementById("modal").style.display = "none";
-        document.getElementById("modal").setAttribute("aria-hidden", "true");
+        elements.modal.style.display = "none";
+        elements.modal.setAttribute("aria-hidden", "true");
     }
-    document.getElementById("modal").addEventListener("click", function(e) {
-        if (e.target === this) closeModal();
-    });
 
-    const allCategories = [
-        "Mineral water (high price)",
-        "Reasonable cost",
-        "Free"
-    ];
+    function setupGeolocation() {
+        if (!navigator.geolocation) {
+            elements.geoBtn.style.display = 'none';
+            return;
+        }
+        
+        elements.geoBtn.addEventListener('click', function() {
+            elements.geoBtn.textContent = 'Locating...';
+            elements.geoBtn.disabled = true;
+            
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    elements.map.setView([pos.coords.latitude, pos.coords.longitude], 13);
+                    elements.geoBtn.textContent = '📍 Find Near Me';
+                    elements.geoBtn.disabled = false;
+                },
+                (err) => {
+                    console.error("Geolocation error:", err);
+                    elements.geoBtn.textContent = '❌ Location Failed';
+                    setTimeout(() => {
+                        elements.geoBtn.textContent = '📍 Find Near Me';
+                        elements.geoBtn.disabled = false;
+                    }, 2000);
+                },
+                { timeout: 10000 }
+            );
+        });
+    }
 
-    function getColor(category) {
-        switch(category) {
-            case "Mineral water (high price)": return "red";
-            case "Reasonable cost": return "#BBBD3E";
-            case "Free": return "green";
-            default: return "blue";
+    function setupAccordions() {
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordion = header.parentElement;
+                accordion.classList.toggle('active');
+                const chevron = header.querySelector('.chevron');
+                if (chevron) chevron.classList.toggle('rotate');
+            });
+        });
+    }
+
+    function loadMap() {
+        elements.map = L.map("map").setView(config.initialView, config.initialZoom);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "&copy; OpenStreetMap contributors",
+        }).addTo(elements.map);
+
+        elements.markerClusterGroup = L.markerClusterGroup({
+            iconCreateFunction: createClusterIcon
+        });
+        elements.map.addLayer(elements.markerClusterGroup);
+    }
+
+    function createClusterIcon(cluster) {
+        const markers = cluster.getAllChildMarkers();
+        const counts = {};
+        
+        markers.forEach(m => {
+            const category = m.options.category || (m.data && m.data.category) || 'Unknown';
+            counts[category] = (counts[category] || 0) + 1;
+        });
+
+        let dominantCategory = null;
+        let maxCount = 0;
+        for (const cat in counts) {
+            if (counts[cat] > maxCount) {
+                maxCount = counts[cat];
+                dominantCategory = cat;
+            }
+        }
+
+        const clusterColors = {
+            "Free": "green",
+            "Reasonable cost": "orange",
+            "Mineral water or high price": "red"
+        };
+        const color = clusterColors[dominantCategory] || "blue";
+
+        return L.divIcon({
+            html: `<div style="background-color:${color};" class="custom-cluster-icon">${cluster.getChildCount()}</div>`,
+            className: 'custom-cluster-icon',
+            iconSize: L.point(36, 36)
+        });
+    }
+
+    function fetchData() {
+        elements.loadingOverlay.style.display = 'flex';
+        
+        const cachedData = localStorage.getItem('restaurantsCache');
+        const cacheTime = localStorage.getItem('restaurantsCacheTime');
+        
+        if (cachedData && cacheTime && Date.now() - cacheTime < config.cacheTTL) {
+            processData(JSON.parse(cachedData));
+            elements.loadingOverlay.style.display = 'none';
+            fetchFreshData();
+            return;
+        }
+        
+        fetchFreshData();
+    }
+    
+    function fetchFreshData() {
+        fetch('restaurants.json')
+            .then(res => {
+                if (!res.ok) throw new Error('Network response was not ok');
+                return res.json();
+            })
+            .then(data => {
+                localStorage.setItem('restaurantsCache', JSON.stringify(data));
+                localStorage.setItem('restaurantsCacheTime', Date.now());
+                processData(data);
+                elements.loadingOverlay.style.display = 'none';
+            })
+            .catch(err => {
+                elements.loadingOverlay.style.display = 'none';
+                handleDataError(err);
+            });
+    }
+
+    function processData(data) {
+        const cities = Array.from(new Set(data.map(d => d.City))).sort();
+        data.forEach(item => createMarker(item));
+        buildFilterUI(cities);
+        applyFilters();
+    }
+
+    function handleDataError(err) {
+        console.error("Error loading restaurants data:", err);
+        const cachedData = localStorage.getItem('restaurantsCache');
+        if (cachedData) {
+            console.log("Falling back to cached data");
+            processData(JSON.parse(cachedData));
+        } else {
+            alert("Could not load restaurant data. Please try again later.");
         }
     }
 
-    // New function to get colored icon for markers
-    function getColoredIcon(category) {
-        const colorMap = {
-            "Mineral water (high price)": "red",
-            "Reasonable cost": "yellow",
-            "Free": "green"
-        };
-        const color = colorMap[category] || "blue";
+    function createMarker(item) {
+        const category = getCategory(item["Tap Water Policy"]);
+        state.countsTotal[category]++;
+        
+        const marker = L.marker([item.Latitude, item.Longitude], {
+            icon: getColoredIcon(category),
+            category: category,
+            data: {
+                category: category,
+                city: item.City
+            }
+        });
 
+        // Función helper para emojis de política de agua
+        const getWaterPolicyEmoji = (policy) => {
+            switch(policy) {
+                case "Yes, for free": return "🟢";
+                case "Yes, at reasonable cost": return "🟡";
+                case "No, they charge high price": return "🔴";
+                default: return "⚪";
+            }
+        };
+
+        // Función para formatear el texto de la política
+        const formatPolicyText = (policy) => {
+            const policyTexts = {
+                "Yes, for free": "Free tap water",
+                "Yes, at reasonable cost": "Fair price (upon request)",
+                "No, they charge high price": "Bottled water only"
+            };
+            return policyTexts[policy] || policy;
+        };
+
+        marker.bindPopup(`
+            <div class="popup-content">
+                <div><b>${item["Restaurant Name"]}</b></div>
+                <div>📍 <a href="https://maps.google.com/?q=${item.Address}, ${item.City}" target="_blank">
+                    ${item.Address}, ${item.City}
+                </a></div>
+                <div>💧 ${getWaterPolicyEmoji(item["Tap Water Policy"])} ${formatPolicyText(item["Tap Water Policy"])}</div>
+                ${item.Comments ? `<div>📝 ${item.Comments}</div>` : ''}
+            </div>
+        `);
+
+        state.allMarkers.push({marker, data: {category, city: item.City}});
+    }
+
+    function getCategory(policy) {
+        switch(policy) {
+            case "No, they charge high price": return "Mineral water or high price";
+            case "Yes, at reasonable cost": return "Reasonable cost";
+            case "Yes, for free": return "Free";
+            default: return "Mineral water or high price";
+        }
+    }
+
+    function getColoredIcon(category) {
+        const color = config.colorMap[category] || "blue";
         return new L.Icon({
             iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${color.replace('#','')}.png`,
             shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
@@ -417,90 +834,37 @@
         });
     }
 
-    const countsTotal = {
-        "Mineral water (high price)": 0,
-        "Reasonable cost": 0,
-        "Free": 0
-    };
-    let countsFiltered = {...countsTotal};
-
-    const categoryGroups = {};
-    let allMarkers = [];
-
-    // Cluster group with custom icon for dominant category color
-    const markerClusterGroup = L.markerClusterGroup({
-        iconCreateFunction: function(cluster) {
-            const markers = cluster.getAllChildMarkers();
-            const counts = {};
-            markers.forEach(m => {
-                const category = m.options.category || (m.data && m.data.category) || 'Unknown';
-                counts[category] = (counts[category] || 0) + 1;
-            });
-            let dominantCategory = null;
-            let maxCount = 0;
-            for (const cat in counts) {
-                if (counts[cat] > maxCount) {
-                    maxCount = counts[cat];
-                    dominantCategory = cat;
-                }
-            }
-            const colorMap = {
-                "Free": "green",
-				"Reasonable cost": "yellowgreen",
-				"Mineral water (high price)": "red"
-            };
-            const color = colorMap[dominantCategory] || "blue";
-
-            return L.divIcon({
-                html: `<div style="background-color:${color};" class="custom-cluster-icon">${cluster.getChildCount()}</div>`,
-                className: 'custom-cluster-icon',
-                iconSize: L.point(40, 40)
-            });
-        }
-    });
-
-    const map = L.map("map").setView([52.37, 4.89], 7);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; OpenStreetMap contributors",
-    }).addTo(map);
-    map.addLayer(markerClusterGroup);
-
     function loadFilterState() {
         const saved = localStorage.getItem("tapWaterFilters");
         if (saved) return JSON.parse(saved);
-        return {
-            "Mineral water (high price)": true,
-            "Reasonable cost": true,
-            "Free": true
-        };
+        return {...config.defaultFilterState};
     }
+
     function saveFilterState(state) {
         localStorage.setItem("tapWaterFilters", JSON.stringify(state));
     }
 
     function buildFilterUI(cities) {
-		const filterContainer = document.getElementById('Filters');
-		const countersContainer = document.getElementById('Filtered-Counters');
-               
-		const filterState = loadFilterState();
+        const categoryContainer = document.getElementById('Category-Filters');
+        const cityContainer = document.getElementById('City-Filter');
+        const countersContainer = document.getElementById('Filtered-Counters');
         
-		filterContainer.innerHTML = '';
-		countersContainer.innerHTML = '';
+        categoryContainer.innerHTML = '';
+        cityContainer.innerHTML = '';
+        countersContainer.innerHTML = '';
 
-        allCategories.forEach(category => {
+        config.categories.forEach(category => {
             const safeId = category.replace(/\s+/g, "_");
-            const checked = filterState[category] ? 'checked' : '';
-            const color = getColor(category);
+            const color = config.colorMap[category];
 
             const label = document.createElement('label');
             label.id = 'label_' + safeId;
-            label.style.opacity = filterState[category] ? '1' : '0.4';
-
+            
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.className = 'legend-checkbox';
             checkbox.dataset.category = category;
-            checkbox.checked = filterState[category];
+            checkbox.checked = state.filterState[category];
             checkbox.setAttribute('aria-checked', checkbox.checked);
             checkbox.setAttribute('role', 'checkbox');
             checkbox.setAttribute('tabindex', '0');
@@ -512,8 +876,7 @@
             label.appendChild(checkbox);
             label.appendChild(colorBox);
             label.appendChild(document.createTextNode(category));
-
-            filterContainer.appendChild(label);
+            categoryContainer.appendChild(label);
         });
 
         const citySelect = document.createElement('select');
@@ -528,7 +891,7 @@
             option.textContent = city;
             citySelect.appendChild(option);
         });
-        filterContainer.appendChild(citySelect);
+        cityContainer.appendChild(citySelect);
 
         const filteredCountersSpan = document.createElement('span');
         filteredCountersSpan.id = 'category-counters-filtered';
@@ -546,13 +909,10 @@
                 const category = e.target.dataset.category;
                 const label = document.getElementById("label_" + category.replace(/\s+/g, "_"));
                 const checked = e.target.checked;
-                if (checked) {
-                    label.style.opacity = "1";
-                } else {
-                    label.style.opacity = "0.4";
-                }
-                filterState[category] = checked;
-                saveFilterState(filterState);
+                
+                label.style.opacity = checked ? "1" : "0.4";
+                state.filterState[category] = checked;
+                saveFilterState(state.filterState);
                 applyFilters();
             });
         });
@@ -560,120 +920,65 @@
 
     function applyFilters() {
         const cityFilter = document.getElementById('city-filter').value;
-        const filterState = loadFilterState();
+        
+        elements.markerClusterGroup.clearLayers();
+        resetFilteredCounts();
 
-        markerClusterGroup.clearLayers();
-
-        countsFiltered = {
-            "Mineral water (high price)": 0,
-            "Reasonable cost": 0,
-            "Free": 0
-        };
-
-        const filteredMarkers = allMarkers.filter(({data}) => {
+        const filteredMarkers = state.allMarkers.filter(({data}) => {
             const cat = data.category;
             const cityMatch = cityFilter === 'all' || data.city === cityFilter;
-            return filterState[cat] && cityMatch;
+            return state.filterState[cat] && cityMatch;
         });
 
         filteredMarkers.forEach(({marker, data}) => {
-            markerClusterGroup.addLayer(marker);
-            countsFiltered[data.category]++;
+            elements.markerClusterGroup.addLayer(marker);
+            state.countsFiltered[data.category]++;
         });
 
         updateFilteredCounters();
         adjustMapView(filteredMarkers);
     }
 
+    function resetFilteredCounts() {
+        state.countsFiltered = {
+            "Free": 0,
+            "Reasonable cost": 0,
+            "Mineral water or high price": 0
+        };
+    }
+
     function adjustMapView(filteredMarkers) {
         if (filteredMarkers.length === 0) {
-            map.setView([52.37, 4.89], 7);
+            elements.map.setView(config.initialView, config.initialZoom);
             return;
         }
         const group = new L.featureGroup(filteredMarkers.map(m => m.marker));
-        map.fitBounds(group.getBounds().pad(0.1));
+        elements.map.fitBounds(group.getBounds().pad(0.1));
     }
 
     function updateFilteredCounters() {
         const filteredSpan = document.getElementById('category-counters-filtered');
         const totalsDiv = document.getElementById('totals-global');
-		const sep = "\u00A0\u00A0\u00A0|\u00A0\u00A0\u00A0";
+        const sep = "\u00A0\u00A0\u00A0|\u00A0\u00A0\u00A0";
 
         filteredSpan.textContent = 
-            `Free: ${countsFiltered["Free"]}${sep}Reasonable cost: ${countsFiltered["Reasonable cost"]}${sep}Mineral water or high price: ${countsFiltered["Mineral water (high price)"]}`;
+            `Free: ${state.countsFiltered["Free"]}${sep}Reasonable cost: ${state.countsFiltered["Reasonable cost"]}${sep}Mineral water or high price: ${state.countsFiltered["Mineral water or high price"]}`;
 
         totalsDiv.textContent =
-            `Totals: Free: ${countsTotal["Free"]}${sep}Reasonable cost: ${countsTotal["Reasonable cost"]}${sep}Mineral water or high price: ${countsTotal["Mineral water (high price)"]}`;
+            `Totals:\u00A0\u00A0\u00A0\u00A0\u00A0Free: ${state.countsTotal["Free"]}${sep}Reasonable cost: ${state.countsTotal["Reasonable cost"]}${sep}Mineral water or high price: ${state.countsTotal["Mineral water or high price"]}`;
     }
 
-    let filterState = loadFilterState();
-
-    fetch('restaurants.json')
-    .then(res => res.json())
-    .then(data => {
-        const cities = Array.from(new Set(data.map(d => d.City))).sort();
-
-        allCategories.forEach(cat => {
-            categoryGroups[cat] = L.layerGroup();
-        });
-
-        data.forEach(item => {
-            let cat;
-            switch(item["Tap Water Policy"]) {
-                case "No, they charge high price":
-                    cat = "Mineral water (high price)";
-                    break;
-                case "Yes, at reasonable cost":
-                    cat = "Reasonable cost";
-                    break;
-                case "Yes, for free":
-                    cat = "Free";
-                    break;
-                default:
-                    cat = "Mineral water (high price)";
-            }
-
-            countsTotal[cat]++;
-
-            const marker = L.marker([item.Latitude, item.Longitude], {
-                icon: getColoredIcon(cat),
-                category: cat
-            });
-
-            marker.bindPopup(`
-                <div class="popup-content">
-                    <div><b>${item["Restaurant Name"]}</b></div>
-                    <div><u>${item.City} - ${item.Address}</u></div>
-                    <div><i>${cat}</i></div>
-                    <div>${item.Comments || ""}</div>
-                </div>
-            `);
-
-            allMarkers.push({marker, data: {category: cat, city: item.City}});
-        });
-
-        buildFilterUI(cities);
-        applyFilters();
-
-    })
-    .catch(err => {
-        console.error("Error loading restaurants.json:", err);
-        alert("Restaurants layer can't be loaded");
-    });
-
-    document.querySelectorAll('.accordion-header').forEach(header => {
-        header.addEventListener('click', () => {
-            const accordion = header.parentElement;
-            accordion.classList.toggle('active');
-            const chevron = header.querySelector('.chevron');
-            if (chevron) chevron.classList.toggle('rotate');
-        });
-    });
+    if (document.readyState !== 'loading') {
+        init();
+    } else {
+        document.addEventListener('DOMContentLoaded', init);
+    }
+})();
 </script>
 
-<footer style="text-align:center; margin-top:20px; font-size:0.85em; color:#555;">
+<footer style="text-align:center;margin-top:16px;font-size:0.8em;color:#555">
     <p>
-        <a href="privacy.html" target="_blank" style="color:inherit; text-decoration:underline;">
+        <a href="privacy.html" target="_blank" style="color:inherit;text-decoration:underline">
             Privacy Policy
         </a>
     </p>
