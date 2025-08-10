@@ -528,7 +528,7 @@
     </div>
 
     <div class="btn-wrap">
-        <button class="share-btn" onclick="openModal()">Share Details</button>
+        <button class="share-btn">Share Details</button>
     </div>
 
     <div style="text-align:center">
@@ -561,7 +561,7 @@
 
 <div id="modal" aria-hidden="true">
     <div id="modal-content">
-        <button id="modal-close" aria-label="Close form" onclick="closeModal()">×</button>
+        <button id="modal-close">×</button>
         <iframe id="modal-iframe" src="https://app.youform.com/forms/ubbqidvt" title="Share restaurant details form" loading="lazy"></iframe>
     </div>
 </div>
@@ -595,7 +595,9 @@
         map: null,
         markerClusterGroup: null,
         loadingOverlay: document.getElementById('loading-overlay'),
-        geoBtn: document.getElementById('geo-btn')
+        geoBtn: document.getElementById('geo-btn'),
+        shareBtn: document.querySelector('.share-btn'),
+        modalClose: document.getElementById('modal-close')
     };
 
     const state = {
@@ -612,6 +614,13 @@
         loadMap();
         setupGeolocation();
         fetchData();
+        setupEventListeners();
+    }
+
+    function setupEventListeners() {
+        // Configura los event listeners para los botones
+        elements.shareBtn.addEventListener('click', openModal);
+        elements.modalClose.addEventListener('click', closeModal);
     }
 
     function setupModal() {
