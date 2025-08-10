@@ -6,10 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Find restaurants in the Netherlands that offer free or fairly priced tap water">
 
-<!-- Favicon relacionado con agua del grifo -->
+<!-- Favicon related to tap water -->
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5882/5882900.png" type="image/png">
 
-<!-- Hojas de estilo -->
+<!-- Stylesheets -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
@@ -566,13 +566,14 @@
     </div>
 </div>
 
-<!-- Scripts al final del body para mejor rendimiento -->
+<!-- Scripts at the end of body for better performance -->
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script>
 (function() {
     'use strict';
     
+    // Configuration object for the application
     const config = {
         categories: ["Free", "Reasonable cost", "Mineral water or high price"],
         colorMap: {
@@ -580,16 +581,17 @@
             "Reasonable cost": "orange",
             "Mineral water or high price": "red"
         },
-        initialView: [52.37, 4.89],
+        initialView: [52.37, 4.89], // Initial map view centered on the Netherlands
         initialZoom: 7,
         defaultFilterState: {
             "Free": true,
             "Reasonable cost": true,
             "Mineral water or high price": true
         },
-        cacheTTL: 86400000
+        cacheTTL: 86400000 // Cache time-to-live in milliseconds (24 hours)
     };
 
+    // DOM elements cache
     const elements = {
         modal: document.getElementById('modal'),
         map: null,
@@ -600,6 +602,7 @@
         modalClose: document.getElementById('modal-close')
     };
 
+    // Application state
     const state = {
         countsTotal: { "Free": 0, "Reasonable cost": 0, "Mineral water or high price": 0 },
         countsFiltered: { "Free": 0, "Reasonable cost": 0, "Mineral water or high price": 0 },
@@ -607,6 +610,7 @@
         filterState: {...config.defaultFilterState}
     };
 
+    // Main initialization function
     function init() {
         state.filterState = loadFilterState();
         setupModal();
@@ -617,28 +621,32 @@
         setupEventListeners();
     }
 
+    // Set up event listeners for buttons and interactive elements
     function setupEventListeners() {
-        // Configura los event listeners para los botones
         elements.shareBtn.addEventListener('click', openModal);
         elements.modalClose.addEventListener('click', closeModal);
     }
 
+    // Set up modal dialog functionality
     function setupModal() {
         elements.modal.addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
     }
 
+    // Open the modal dialog
     function openModal() {
         elements.modal.style.display = "flex";
         elements.modal.setAttribute("aria-hidden", "false");
     }
 
+    // Close the modal dialog
     function closeModal() {
         elements.modal.style.display = "none";
         elements.modal.setAttribute("aria-hidden", "true");
     }
 
+    // Set up geolocation functionality
     function setupGeolocation() {
         if (!navigator.geolocation) {
             elements.geoBtn.style.display = 'none';
@@ -668,6 +676,7 @@
         });
     }
 
+    // Set up accordion functionality
     function setupAccordions() {
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
@@ -679,12 +688,14 @@
         });
     }
 
+    // Initialize the Leaflet map
     function loadMap() {
         elements.map = L.map("map").setView(config.initialView, config.initialZoom);
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
             attribution: "&copy; OpenStreetMap contributors",
         }).addTo(elements.map);
 
+        // Initialize marker cluster group
         elements.markerClusterGroup = L.markerClusterGroup({
             iconCreateFunction: createClusterIcon,
             spiderfyOnMaxZoom: true,
@@ -694,15 +705,18 @@
         elements.map.addLayer(elements.markerClusterGroup);
     }
 
+    // Create custom cluster icons based on the dominant category
     function createClusterIcon(cluster) {
         const markers = cluster.getAllChildMarkers();
         const counts = {};
         
+        // Count markers by category
         markers.forEach(m => {
             const category = m.options.category || (m.data && m.data.category) || 'Unknown';
             counts[category] = (counts[category] || 0) + 1;
         });
 
+        // Find the dominant category
         let dominantCategory = null;
         let maxCount = 0;
         for (const cat in counts) {
@@ -712,6 +726,7 @@
             }
         }
 
+        // Define cluster colors based on category
         const clusterColors = {
             "Free": "green",
             "Reasonable cost": "orange",
@@ -719,6 +734,7 @@
         };
         const color = clusterColors[dominantCategory] || "blue";
 
+        // Return a custom div icon for the cluster
         return L.divIcon({
             html: `<div style="background-color:${color};" class="custom-cluster-icon">${cluster.getChildCount()}</div>`,
             className: 'custom-cluster-icon',
@@ -726,22 +742,25 @@
         });
     }
 
+    // Fetch restaurant data from JSON file or cache
     function fetchData() {
         elements.loadingOverlay.style.display = 'flex';
         
+        // Check for cached data first
         const cachedData = localStorage.getItem('restaurantsCache');
         const cacheTime = localStorage.getItem('restaurantsCacheTime');
         
         if (cachedData && cacheTime && Date.now() - cacheTime < config.cacheTTL) {
             processData(JSON.parse(cachedData));
             elements.loadingOverlay.style.display = 'none';
-            fetchFreshData();
+            fetchFreshData(); // Fetch fresh data in background
             return;
         }
         
         fetchFreshData();
     }
     
+    // Fetch fresh data from the server
     function fetchFreshData() {
         fetch('restaurants.json')
             .then(res => {
@@ -760,17 +779,26 @@
             });
     }
 
+    // Process the restaurant data and create markers
     function processData(data) {
         // Reset markers and counters
         state.allMarkers = [];
         state.countsTotal = { "Free": 0, "Reasonable cost": 0, "Mineral water or high price": 0 };
 
+        // Get unique cities for filter dropdown
         const cities = Array.from(new Set(data.map(d => d.City))).sort();
+        
+        // Create markers for each restaurant
         data.forEach(item => createMarker(item));
+        
+        // Build the filter UI
         buildFilterUI(cities);
+        
+        // Apply initial filters
         applyFilters();
     }
 
+    // Handle data loading errors
     function handleDataError(err) {
         console.error("Error loading restaurants data:", err);
         const cachedData = localStorage.getItem('restaurantsCache');
@@ -782,7 +810,9 @@
         }
     }
 
+    // Create a marker for a restaurant
     function createMarker(item) {
+        // Determine category based on tap water policy
         const category = getCategory(item["Tap Water Policy"]);
         state.countsTotal[category]++;
         
@@ -793,6 +823,7 @@
         );
         if (existingMarker) return;
 
+        // Create new marker
         const marker = L.marker([item.Latitude, item.Longitude], {
             icon: getColoredIcon(category),
             category: category,
@@ -802,38 +833,26 @@
             }
         });
 
-        const getWaterPolicyEmoji = (policy) => {
-            switch(policy) {
-                case "Yes, for free": return "🟢";
-                case "Yes, at reasonable cost": return "🟡";
-                case "No, they charge high price": return "🔴";
-                default: return "⚪";
-            }
-        };
-
-        const formatPolicyText = (policy) => {
-            const policyTexts = {
-                "Yes, for free": "Free tap water",
-                "Yes, at reasonable cost": "Fair price (upon request)",
-                "No, they charge high price": "Bottled water only"
-            };
-            return policyTexts[policy] || policy;
-        };
-
+        // Bind popup with restaurant information
         marker.bindPopup(`
-            <div class="popup-content">
-                <div><b>${item["Restaurant Name"]}</b></div>
-                <div>📍 <a href="https://maps.google.com/?q=${item.Address}, ${item.City}" target="_blank">
-                    ${item.Address}, ${item.City}
-                </a></div>
-                <div>💧 ${getWaterPolicyEmoji(item["Tap Water Policy"])} ${formatPolicyText(item["Tap Water Policy"])}</div>
-                ${item.Comments ? `<div>📝 ${item.Comments}</div>` : ''}
-            </div>
-        `);
+			<div class="popup-content">
+				<div><a href="${item.MapsURL}" target="_blank" rel="noopener noreferrer"
+					style="color: inherit; text-decoration: none;">
+					<strong>${item["Restaurant Name"]}</strong>
+				</a></div>
+				<div>📍 <a href="${item.MapsURL}" target="_blank" rel="noopener noreferrer" style="color: #3498db; text-decoration: underline;">
+					${item.Address}, ${item.City}
+				</a></div>
+				<div>💧 ${item["Tap Water Policy"]}</div>
+					${item.Comments ? `<div>📝 ${item.Comments}</div>` : ''}
+			</div>
+		`);
 
+        // Add marker to the collection
         state.allMarkers.push({marker, data: {category, city: item.City}});
     }
 
+    // Determine category based on tap water policy
     function getCategory(policy) {
         switch(policy) {
             case "No, they charge high price": return "Mineral water or high price";
@@ -843,6 +862,7 @@
         }
     }
 
+    // Get colored icon based on category
     function getColoredIcon(category) {
         const color = config.colorMap[category] || "blue";
         return new L.Icon({
@@ -855,25 +875,30 @@
         });
     }
 
+    // Load filter state from localStorage
     function loadFilterState() {
         const saved = localStorage.getItem("tapWaterFilters");
         if (saved) return JSON.parse(saved);
         return {...config.defaultFilterState};
     }
 
+    // Save filter state to localStorage
     function saveFilterState(state) {
         localStorage.setItem("tapWaterFilters", JSON.stringify(state));
     }
 
+    // Build the filter UI (category checkboxes and city dropdown)
     function buildFilterUI(cities) {
         const categoryContainer = document.getElementById('Category-Filters');
         const cityContainer = document.getElementById('City-Filter');
         const countersContainer = document.getElementById('Filtered-Counters');
         
+        // Clear existing content
         categoryContainer.innerHTML = '';
         cityContainer.innerHTML = '';
         countersContainer.innerHTML = '';
 
+        // Create category filter checkboxes
         config.categories.forEach(category => {
             const safeId = category.replace(/\s+/g, "_");
             const color = config.colorMap[category];
@@ -900,6 +925,7 @@
             categoryContainer.appendChild(label);
         });
 
+        // Create city filter dropdown
         const citySelect = document.createElement('select');
         citySelect.id = 'city-filter';
         citySelect.setAttribute('aria-label', 'Filter by city');
@@ -914,16 +940,21 @@
         });
         cityContainer.appendChild(citySelect);
 
+        // Create filtered counters display
         const filteredCountersSpan = document.createElement('span');
         filteredCountersSpan.id = 'category-counters-filtered';
         filteredCountersSpan.setAttribute('aria-live', 'polite');
         filteredCountersSpan.setAttribute('aria-atomic', 'true');
         countersContainer.appendChild(filteredCountersSpan);
 
+        // Set up event listeners for checkboxes
         setupLegendCheckboxes();
+        
+        // Add change listener for city filter
         citySelect.addEventListener('change', () => applyFilters());
     }
 
+    // Set up event listeners for legend checkboxes
     function setupLegendCheckboxes() {
         document.querySelectorAll('.legend-checkbox').forEach(checkbox => {
             checkbox.addEventListener('change', e => {
@@ -931,14 +962,20 @@
                 const label = document.getElementById("label_" + category.replace(/\s+/g, "_"));
                 const checked = e.target.checked;
                 
+                // Update label opacity based on checked state
                 label.style.opacity = checked ? "1" : "0.4";
+                
+                // Update filter state
                 state.filterState[category] = checked;
                 saveFilterState(state.filterState);
+                
+                // Apply filters
                 applyFilters();
             });
         });
     }
 
+    // Apply current filters to markers
     function applyFilters() {
         const cityFilter = document.getElementById('city-filter').value;
         
@@ -946,22 +983,25 @@
         elements.markerClusterGroup.clearLayers();
         resetFilteredCounts();
 
+        // Filter markers based on current selections
         const filteredMarkers = state.allMarkers.filter(({ data }) => {
             const cat = data.category;
             const cityMatch = cityFilter === 'all' || data.city === cityFilter;
             return state.filterState[cat] && cityMatch;
         });
 
-        // Add filtered markers
+        // Add filtered markers to the map
         filteredMarkers.forEach(({ marker, data }) => {
             elements.markerClusterGroup.addLayer(marker);
             state.countsFiltered[data.category]++;
         });
 
+        // Update counters and adjust map view
         updateFilteredCounters();
         adjustMapView(filteredMarkers);
     }
 
+    // Reset filtered counters
     function resetFilteredCounts() {
         state.countsFiltered = {
             "Free": 0,
@@ -970,27 +1010,35 @@
         };
     }
 
+    // Adjust map view to show filtered markers
     function adjustMapView(filteredMarkers) {
         if (filteredMarkers.length === 0) {
+            // If no markers match filters, reset to initial view
             elements.map.setView(config.initialView, config.initialZoom);
             return;
         }
+        
+        // Create a feature group and fit bounds to show all filtered markers
         const group = new L.featureGroup(filteredMarkers.map(m => m.marker));
         elements.map.fitBounds(group.getBounds().pad(0.1));
     }
 
+    // Update the filtered counters display
     function updateFilteredCounters() {
         const filteredSpan = document.getElementById('category-counters-filtered');
         const totalsDiv = document.getElementById('totals-global');
-        const sep = "\u00A0\u00A0\u00A0|\u00A0\u00A0\u00A0";
+        const sep = "\u00A0\u00A0\u00A0|\u00A0\u00A0\u00A0"; // Non-breaking spaces with pipe separator
 
+        // Update filtered counters
         filteredSpan.textContent = 
             `Free: ${state.countsFiltered["Free"]}${sep}Reasonable cost: ${state.countsFiltered["Reasonable cost"]}${sep}Mineral water or high price: ${state.countsFiltered["Mineral water or high price"]}`;
 
+        // Update global totals
         totalsDiv.textContent =
             `Totals:\u00A0\u00A0\u00A0\u00A0\u00A0Free: ${state.countsTotal["Free"]}${sep}Reasonable cost: ${state.countsTotal["Reasonable cost"]}${sep}Mineral water or high price: ${state.countsTotal["Mineral water or high price"]}`;
     }
 
+    // Initialize the application when DOM is ready
     if (document.readyState !== 'loading') {
         init();
     } else {
