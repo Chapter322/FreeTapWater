@@ -1450,16 +1450,6 @@
     "Comments": ""
   },
   {
-    "Restaurant Name": "Hanno",
-    "City": "Delft",
-    "Address": "Doelenplein 7",
-    "Latitude": 52.0144266,
-    "Longitude": 4.3588764,
-    "MapsURL": "https://www.google.com/maps/@52.0144266,4.3588764,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5b5572154cb55:0xe6e0ca8f236f4839!8m2!3d52.0144266!4d4.3588764",
-    "Tap Water Policy": "Yes, for free",
-    "Comments": ""
-  },
-  {
     "Restaurant Name": "Le café",
     "City": "Den Haag",
     "Address": "Oude Molstraat 26-A",
@@ -1537,7 +1527,7 @@
     "Longitude": 4.1054971,
     "MapsURL": "https://www.google.com/maps/@51.9878822,4.1054971,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5adacbb639bad:0xce5eae3f12c78ac6!8m2!3d51.9878822!4d4.1054971",
     "Tap Water Policy": "No, they charge high price",
-    "Comments": "Voor €150 aan wijn gedronken, maar we mochten nog steeds betalen voor gewoon water"
+    "Comments": "Drank €150 worth of wine, but we still had to pay for plain water"
   },
   {
     "Restaurant Name": "160K Retro Video Arcade",
@@ -1547,6 +1537,166 @@
     "Longitude": 4.4767081,
     "MapsURL": "https://www.google.com/maps/@51.9255784,4.4767081,17z/data=!3m1!4b1!4m5!3m4!1s0x47c435819cfd8707:0x946bfe9b1be5482c!8m2!3d51.9255784!4d4.4767081",
     "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "HANNO - Groots café",
+    "City": "Delft",
+    "Address": "Doelenplein 7",
+    "Latitude": 52.0144266,
+    "Longitude": 4.3588764,
+    "MapsURL": "https://www.google.com/maps/@52.0144266,4.3588764,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5b5572154cb55:0xe6e0ca8f236f4839!8m2!3d52.0144266!4d4.3588764",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Restaurant Bla Bla",
+    "City": "Groningen",
+    "Address": "Nieuwe Boteringestraat 9",
+    "Latitude": 53.2224426,
+    "Longitude": 6.5615523,
+    "MapsURL": "https://www.google.com/maps/@53.2224426,6.5615523,17z/data=!3m1!4b1!4m5!3m4!1s0x47c9cd453f67f69d:0x97fb8ed4c866d28f!8m2!3d53.2224426!4d6.5615523",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "The Dutch Dukes",
+    "City": "Rotterdam",
+    "Address": "Witte de Withstraat 81",
+    "Latitude": 51.9153962,
+    "Longitude": 4.4758231,
+    "MapsURL": "https://www.google.com/maps/@51.9153962,4.4758231,17z/data=!3m1!4b1!4m5!3m4!1s0x47c435971f6da23d:0x548d683271d40b5!8m2!3d51.9153962!4d4.4758231",
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "No free tapwater available. It's either full price bottled mineral or nothing."
+  },
+  {
+    "Restaurant Name": "Resumé by 6&24",
+    "City": "Den Haag",
+    "Address": "Bierkade 16A",
+    "Latitude": 52.0748107,
+    "Longitude": 4.3186408,
+    "MapsURL": "https://www.google.com/maps/@52.0748107,4.3186408,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5b7afe90f2587:0xaadda356674b2aa5!8m2!3d52.0748107!4d4.3186408",
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "2.75 per person or 3.75 per person with unlimited refills with krnwtr"
+  },
+  {
+    "Restaurant Name": "Beers & Barrels",
+    "City": "Utrecht",
+    "Address": "Oudegracht aan de Werf 125",
+    "Latitude": 52.0919095,
+    "Longitude": 5.1167415,
+    "MapsURL": "https://www.google.com/maps/@52.0919095,5.1167415,17z/data=!3m1!4b1!4m5!3m4!1s0x47c66f44a0459733:0x4956eb66700ba4de!8m2!3d52.0919095!4d5.1167415",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Pavarotti Delft",
+    "City": "Delft",
+    "Address": "Stationsplein 14",
+    "Latitude": 52.006636,
+    "Longitude": 4.3564811,
+    "MapsURL": "https://www.google.com/maps/@52.006636,4.3564811,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5b5558af5f88d:0xee2bc7befa4e362f!8m2!3d52.006636!4d4.3564811",
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "De Botanie",
+    "City": "Delft",
+    "Address": "Choorstraat 24",
+    "Latitude": 52.0130753,
+    "Longitude": 4.3577312,
+    "MapsURL": "https://www.google.com/maps/@52.0130753,4.3577312,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5b5eefaaee215:0x3fc2113176297c79!8m2!3d52.0130753!4d4.3577312",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Pesca Seafood Restaurant",
+    "City": "Amsterdam",
+    "Address": "Rozengracht 133",
+    "Latitude": 52.372763,
+    "Longitude": 4.8788041,
+    "MapsURL": "https://www.google.com/maps/@52.372763,4.8788041,17z/data=!3m1!4b1!4m5!3m4!1s0x47c609db80601bad:0x8fe31b74f68e9a22!8m2!3d52.372763!4d4.8788041",
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "5 euros per bottle of tap water"
+  },
+  {
+    "Restaurant Name": "Pesca Seafood Restaurant",
+    "City": "Rotterdam",
+    "Address": "Botersloot 125",
+    "Latitude": 51.9226992,
+    "Longitude": 4.4868283,
+    "MapsURL": "https://www.google.com/maps/@51.9226992,4.4868283,17z/data=!3m1!4b1!4m5!3m4!1s0x47c433312251506d:0x748b81a345ad0c3d!8m2!3d51.9226992!4d4.4868283",
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "5 euros per bottle of tap water"
+  },
+  {
+    "Restaurant Name": "Strøming",
+    "City": "Etten-Leur",
+    "Address": "Zevenbergseweg 21",
+    "Latitude": 51.609196,
+    "Longitude": 4.6545941,
+    "MapsURL": "https://www.google.com/maps/@51.609196,4.6545941,17z/data=!3m1!4b1!4m5!3m4!1s0x47c421fb778a7c65:0x8cab9285826c4999!8m2!3d51.609196!4d4.6545941",
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "The Rumah",
+    "City": "Rotterdam",
+    "Address": "Oude Binnenweg 110C",
+    "Latitude": 51.9176156,
+    "Longitude": 4.4756039,
+    "MapsURL": "https://www.google.com/maps/@51.9176156,4.4756039,17z/data=!3m1!4b1!4m5!3m4!1s0x47c43524153814c5:0xe001bdde0fb852ae!8m2!3d51.9176156!4d4.4756039",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Indian Summer",
+    "City": "Enschede",
+    "Address": "Walstraat 15",
+    "Latitude": 52.2192722,
+    "Longitude": 6.8946166,
+    "MapsURL": "https://www.google.com/maps/@52.2192722,6.8946166,17z/data=!3m1!4b1!4m5!3m4!1s0x47b815fbe384f42f:0x52e859e03d3c4c07!8m2!3d52.2192722!4d6.8946166",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Restaurant Nomads",
+    "City": "Amsterdam",
+    "Address": "Oranje-Vrijstaatkade 55",
+    "Latitude": 52.3564173,
+    "Longitude": 4.9299214,
+    "MapsURL": "https://www.google.com/maps/@52.3564173,4.9299214,17z/data=!3m1!4b1!4m5!3m4!1s0x47c6097044f90ea9:0x9de0d507bb3142f8!8m2!3d52.3564173!4d4.9299214",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Asian Kitchen",
+    "City": "Amsterdam",
+    "Address": "Vijzelstraat 5-A",
+    "Latitude": 52.3665693,
+    "Longitude": 4.8933847,
+    "MapsURL": "https://www.google.com/maps/@52.3665693,4.8933847,17z/data=!3m1!4b1!4m5!3m4!1s0x47c609eaa6e46399:0x8e4517347faddbb4!8m2!3d52.3665693!4d4.8933847",
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Harmani",
+    "City": "Amsterdam",
+    "Address": "Frans Halsstraat 89",
+    "Latitude": 52.3548868,
+    "Longitude": 4.888565,
+    "MapsURL": "https://www.google.com/maps/@52.3548868,4.888565,17z/data=!3m1!4b1!4m5!3m4!1s0x47c609cea56928b1:0x5db8442eb5572091!8m2!3d52.3548868!4d4.888565",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Asian Kitchen",
+    "City": "Amsterdam",
+    "Address": "Johan Cruijff Boulevard 81",
+    "Latitude": 52.3134561,
+    "Longitude": 4.9429877,
+    "MapsURL": "https://www.google.com/maps/@52.3134561,4.9429877,17z/data=!3m1!4b1!4m5!3m4!1s0x47c60b97184f1c73:0xb6ffc98cc7e36698!8m2!3d52.3134561!4d4.9429877",
+    "Tap Water Policy": "No, they charge high price",
     "Comments": ""
   }
 ]
