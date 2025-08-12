@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Fair Tap Water</title>
+    <title>Privacy Policy - FairTapWater</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@
             line-height: 1.6;
             color: #333;
         }
-        h1, h2 {
+        h1, h2, h3 {
             color: #222;
         }
         a {
@@ -23,131 +23,167 @@
         a:hover {
             text-decoration: underline;
         }
+        .badge {
+            display: inline-block;
+            padding: 2px 6px;
+            background: #f0f0f0;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .highlight-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #1a73e8;
+            padding: 12px;
+            margin: 16px 0;
+        }
     </style>
 </head>
 <body>
     <h1>Privacy Policy</h1>
-    <p><strong>Last updated:</strong> August 10, 2025</p>
+    <p><strong>Last updated:</strong> August 20, 2025</p>
+
+    <div class="highlight-box">
+        <strong>TL;DR:</strong> We don't track users. Restaurant data is public. Owners can soon verify their listings.
+    </div>
 
     <h2>1. Website Purpose</h2>
     <p>
-        <strong>chapter322.github.io/FreeTapWater</strong> is a non-commercial project created to help visitors 
-        find restaurants and cafes in the Netherlands that offer fairly priced tap water. 
-        The site displays publicly available information about establishments' water policies.
+        <span class="badge">fairtapwater.com</span> is a non-commercial project helping visitors find restaurants in the Netherlands that offer fairly priced tap water.
     </p>
 
     <h2>2. Data Collection Practices</h2>
-    <p>Our website:</p>
     <ul>
-        <li><strong>Does not use</strong> analytics/tracking cookies</li>
-        <li><strong>Does not use</strong> Google Analytics or similar services</li>
-        <li><strong>Uses localStorage</strong> to cache restaurant data for 24 hours to improve performance</li>
-        <li><strong>Requests location access</strong> only when you click "Find Near Me" (never stored)</li>
+        <li><strong>No analytics/tracking cookies</strong> used</li>
+        <li><strong>localStorage</strong> caches restaurant data for 24 hours</li>
+        <li><strong>Geolocation</strong> used only when clicking "Find Near Me"</li>
+        <li><strong>Form submissions</strong> via YouForm (no account required)</li>
     </ul>
 
-    <h2>3. Types of Data Processed</h2>
+    <h2>3. Data Types Processed</h2>
     <h3>Restaurant Information</h3>
-    <p>
-        The displayed data may include:
-    </p>
     <ul>
-        <li>Business names and addresses</li>
+        <li>Business names and addresses (publicly available)</li>
         <li>Geographic coordinates</li>
-        <li>Water policy classifications</li>
-        <li>User-submitted comments</li>
+        <li>Water policy classifications:
+            <ul>
+                <li><span class="badge" style="background:#4CAF50;color:white">Free</span> - No charge</li>
+                <li><span class="badge" style="background:#FF9800">Reasonable</span> - ≤ €1</li>
+                <li><span class="badge" style="background:#F44336;color:white">High price</span> - Bottled only</li>
+            </ul>
+        </li>
+        <li>User-submitted comments (publicly visible)</li>
     </ul>
 
-    <p>
-        <em>Note:</em> For sole proprietorships, this may constitute personal data under GDPR.
-    </p>
-
-    <h3>User Data</h3>
-    <p>
-        We <strong>do not</strong> collect:
-    </p>
+    <h3>Data Verification (Planned Feature)</h3>
+    <p>Coming in 2026:</p>
     <ul>
-        <li>Names or contact information (unless voluntarily submitted via form)</li>
-        <li>Payment information</li>
-        <li>Persistent identifiers</li>
+        <li><strong>Owner verification</strong>:
+            <ul>
+                <li>Restaurant owners can claim listings via email verification</li>
+                <li>Verified status will be displayed publicly</li>
+                <li>Owners can dispute inaccurate information</li>
+            </ul>
+        </li>
+        <li><strong>Verification process</strong>:
+            <ol>
+                <li>Owner submits request via contact form</li>
+                <li>We verify business registration</li>
+                <li>Owner receives verification link via official business email</li>
+            </ol>
+        </li>
+    </ul>
+
+    <h3>Form Submissions</h3>
+    <p>Via <a href="https://app.youform.com/forms/ubbqidvt">YouForm</a>:</p>
+    <ul>
+        <li><strong>Collected</strong>:
+            <ul>
+                <li>Establishment details (name, address)</li>
+                <li>Water policy information</li>
+                <li>Optional experience comments</li>
+            </ul>
+        </li>
+        <li><strong>Never collected</strong>:
+            <ul>
+                <li>Submitter personal information</li>
+                <li>Payment details</li>
+                <li>Browser fingerprints</li>
+            </ul>
+        </li>
     </ul>
 
     <h2>4. Third-Party Services</h2>
-    <p>We integrate with:</p>
-    <table style="width:100%; border-collapse: collapse;">
+    <table>
         <tr>
-            <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Service</th>
-            <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Purpose</th>
-            <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd;">Data Policy</th>
+            <th>Service</th>
+            <th>Purpose</th>
+            <th>Policy</th>
         </tr>
         <tr>
-            <td style="padding:8px; border-bottom:1px solid #ddd;">GitHub Pages</td>
-            <td style="padding:8px; border-bottom:1px solid #ddd;">Hosting</td>
-            <td style="padding:8px; border-bottom:1px solid #ddd;"><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">GitHub Privacy</a></td>
+            <td><a href="https://pages.github.com">GitHub Pages</a></td>
+            <td>Website hosting</td>
+            <td><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">View</a></td>
         </tr>
         <tr>
-            <td style="padding:8px; border-bottom:1px solid #ddd;">OpenStreetMap</td>
-            <td style="padding:8px; border-bottom:1px solid #ddd;">Map tiles</td>
-            <td style="padding:8px; border-bottom:1px solid #ddd;"><a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">OSM Policy</a></td>
+            <td><a href="https://youform.io">Youform</a></td>
+            <td>Data submissions</td>
+            <td><a href="https://youform.io/privacy">View</a></td>
         </tr>
         <tr>
-            <td style="padding:8px; border-bottom:1px solid #ddd;">Google Maps</td>
-            <td style="padding:8px; border-bottom:1px solid #ddd;">Directions links</td>
-            <td style="padding:8px; border-bottom:1px solid #ddd;"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy</a></td>
-        </tr>
-        <tr>
-            <td style="padding:8px;">Youform</td>
-            <td style="padding:8px;">Submission forms</td>
-            <td style="padding:8px;"><a href="https://youform.io/privacy" target="_blank" rel="noopener">Youform Policy</a></td>
+            <td><a href="https://airtable.com">Airtable</a></td>
+            <td>Data storage (backend)</td>
+            <td><a href="https://www.airtable.com/privacy">View</a></td>
         </tr>
     </table>
 
     <h2>5. Data Security</h2>
-    <p>
-        We implement these security measures:
-    </p>
     <ul>
-        <li>HTTPS encryption for all data transfers</li>
-        <li>LocalStorage data is automatically cleared after 24 hours</li>
-        <li>No storage of sensitive user information</li>
-        <li>Regular reviews of third-party service compliance</li>
+        <li>HTTPS encryption on all pages</li>
+        <li>Regular security reviews of third-party services</li>
+        <li>24-hour auto-clear of cached data</li>
+        <li>No storage of sensitive personal data</li>
     </ul>
 
-    <h2>6. Your Rights (GDPR/CCPA)</h2>
-    <p>
-        You may request to:
-    </p>
+    <h2>6. Your Rights</h2>
+    <p>Contact <a href="mailto:contact@fairtapwater.com">contact@fairtapwater.com</a> to:</p>
     <ul>
-        <li>Access personal data we process</li>
+        <li>Request access to your data</li>
         <li>Correct inaccurate information</li>
-        <li>Delete your data (where applicable)</li>
-        <li>Receive your data in portable format</li>
-        <li>Withdraw consent for processing</li>
+        <li>Delete your submissions</li>
+        <li>Opt-out of processing</li>
     </ul>
-    <p>
-        Contact: <a href="mailto:contact@fairtapwater.com">contact@fairtapwater.com</a>
-    </p>
+
+    <div class="highlight-box">
+        <strong>For restaurant owners:</strong> To verify or correct your listing, email us from your official business address with:
+        <ol>
+            <li>Restaurant name and address</li>
+            <li>Proof of ownership (KVK extract or similar)</li>
+            <li>Requested changes (if applicable)</li>
+        </ol>
+    </div>
 
     <h2>7. Policy Changes</h2>
-    <p>
-        We will notify users of significant changes by:
-    </p>
+    <p>We will notify users of significant changes via:</p>
     <ul>
-        <li>Updating the "Last updated" date</li>
-        <li>Posting notices on the website if changes are substantial</li>
+        <li>Notice on <a href="https://fairtapwater.com">our homepage</a></li>
+        <li>Update to this policy's "Last updated" date</li>
     </ul>
 
-    <h2>8. Legal Disclaimer</h2>
-    <p>
-        This is a personal project. While we strive for accuracy:
-    </p>
-    <ul>
-        <li>We cannot guarantee all information is current or correct</li>
-        <li>Establishment policies may change without our knowledge</li>
-        <li>We are not responsible for third-party content or practices</li>
-    </ul>
-
-    <p style="margin-top:30px; font-size:0.9em; color:#666;">
-        <em>This policy was last reviewed and updated on August 10, 2025 to reflect all current website functionality.</em>
-    </p>
+    <div style="margin-top:40px; padding-top:20px; border-top:1px solid #eee; font-size:0.9em;">
+        <p><strong>Contact:</strong> <a href="mailto:contact@fairtapwater.com">contact@fairtapwater.com</a></p>
+        <p><strong>Repository:</strong> <a href="https://github.com/Chapter322/FairTapWater">github.com/Chapter322/FairTapWater</a></p>
+        <p><strong>Business address:</strong> FairTapWater, Keizersgracht 391, 1016 EJ Amsterdam, Netherlands</p>
+    </div>
 </body>
 </html>
