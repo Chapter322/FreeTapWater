@@ -1498,5 +1498,55 @@
     "MapsURL": "https://www.google.com/maps/@52.2538343,6.1598653,17z/data=!3m1!4b1!4m5!3m4!1s0x47c7ea5d52fc0a5f:0x8a2042ceece27908!8m2!3d52.2538343!4d6.1598653",
     "Tap Water Policy": "Yes, for free",
     "Comments": ""
+  },
+  {
+    "Restaurant Name": "The Best Thai Food Delft",
+    "City": "Delft",
+    "Address": "Markt 79",
+    "Latitude": 52.0117292,
+    "Longitude": 4.3601158,
+    "MapsURL": "https://www.google.com/maps/@52.0117292,4.3601158,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5b58fa089af83:0xccef5ed4faeeea4a!8m2!3d52.0117292!4d4.3601158",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "MAES 21",
+    "City": "Baarlo",
+    "Address": "Vergelt 21",
+    "Latitude": 51.3329892,
+    "Longitude": 6.1156347,
+    "MapsURL": "https://www.google.com/maps/@51.3329892,6.1156347,17z/data=!3m1!4b1!4m5!3m4!1s0x47c74fbf8a3904e1:0x3bf048cd320f1b04!8m2!3d51.3329892!4d6.1156347",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Utage Sake Bar",
+    "City": "Amsterdam",
+    "Address": "Lekstraat 11",
+    "Latitude": 52.3452078,
+    "Longitude": 4.9082316,
+    "MapsURL": "https://www.google.com/maps/@52.3452078,4.9082316,17z/data=!3m1!4b1!4m5!3m4!1s0x47c609619817fa47:0xc54b8ebdf0473713!8m2!3d52.3452078!4d4.9082316",
+    "Tap Water Policy": "Yes, at reasonable cost",
+    "Comments": "€2 per person for unlimited chilled still or sparkling water"
+  },
+  {
+    "Restaurant Name": "Uluwatu Beach",
+    "City": "Hoek van Holland",
+    "Address": "Zeekant 57",
+    "Latitude": 51.9878822,
+    "Longitude": 4.1054971,
+    "MapsURL": "https://www.google.com/maps/@51.9878822,4.1054971,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5adacbb639bad:0xce5eae3f12c78ac6!8m2!3d51.9878822!4d4.1054971",
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "Voor €150 aan wijn gedronken, maar we mochten nog steeds betalen voor gewoon water"
+  },
+  {
+    "Restaurant Name": "160K Retro Video Arcade",
+    "City": "Rotterdam",
+    "Address": "Schiekade 201",
+    "Latitude": 51.9255784,
+    "Longitude": 4.4767081,
+    "MapsURL": "https://www.google.com/maps/@51.9255784,4.4767081,17z/data=!3m1!4b1!4m5!3m4!1s0x47c435819cfd8707:0x946bfe9b1be5482c!8m2!3d51.9255784!4d4.4767081",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
   }
 ]
