@@ -232,6 +232,7 @@
         margin-bottom: 12px;
         justify-content: center;
         box-sizing: border-box;
+        text-align: center;
     }
 
     .map-wrap {
@@ -306,21 +307,23 @@
         cursor: pointer;
         min-width: 160px;
         font-weight: 600;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    #category-counters-filtered {
+    #category-counters-filtered, #totals-global {
         font-family: Arial, sans-serif;
         font-weight: 700;
         font-size: 1em;
-        white-space: nowrap;
+        width: 100%;
+        display: block;
+        text-align: center;
+        overflow-wrap: break-word;
     }
 
     #totals-global {
         max-width: var(--content-width);
         margin: 18px auto 30px;
-        text-align: center;
-        font-family: Arial, sans-serif;
-        font-weight: 700;
         font-size: 1.05em;
     }
 
@@ -481,8 +484,22 @@
             flex-direction: column;
             gap: 8px;
         }
-        #City-Filter {
+        #Category-Filters,
+        #City-Filter,
+        #Filtered-Counters {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #city-filter {
+            width: 100%;
             min-width: 100%;
+        }
+        #category-counters-filtered, #totals-global {
+            font-size: 0.9em;
+            white-space: normal;
+        }
+        #Filtered-Counters {
+            padding: 6px 8px;
         }
     }
 </style>
@@ -835,18 +852,18 @@
 
         // Bind popup with restaurant information
         marker.bindPopup(`
-			<div class="popup-content">
-				<div><a href="${item.MapsURL}" target="_blank" rel="noopener noreferrer"
-					style="color: inherit; text-decoration: none;">
-					<strong>${item["Restaurant Name"]}</strong>
-				</a></div>
-				<div>📍 <a href="${item.MapsURL}" target="_blank" rel="noopener noreferrer" style="color: #3498db; text-decoration: underline;">
-					${item.Address}, ${item.City}
-				</a></div>
-				<div>💧 ${item["Tap Water Policy"]}</div>
-					${item.Comments ? `<div>📝 ${item.Comments}</div>` : ''}
-			</div>
-		`);
+            <div class="popup-content">
+                <div><a href="${item.MapsURL}" target="_blank" rel="noopener noreferrer"
+                    style="color: inherit; text-decoration: none;">
+                    <strong>${item["Restaurant Name"]}</strong>
+                </a></div>
+                <div>📍 <a href="${item.MapsURL}" target="_blank" rel="noopener noreferrer" style="color: #3498db; text-decoration: underline;">
+                    ${item.Address}, ${item.City}
+                </a></div>
+                <div>💧 ${item["Tap Water Policy"]}</div>
+                ${item.Comments ? `<div>📝 ${item.Comments}</div>` : ''}
+            </div>
+        `);
 
         // Add marker to the collection
         state.allMarkers.push({marker, data: {category, city: item.City}});
@@ -1027,15 +1044,18 @@
     function updateFilteredCounters() {
         const filteredSpan = document.getElementById('category-counters-filtered');
         const totalsDiv = document.getElementById('totals-global');
-        const sep = "\u00A0\u00A0\u00A0|\u00A0\u00A0\u00A0"; // Non-breaking spaces with pipe separator
+        const isMobile = window.innerWidth <= 700;
+        const mobileSep = "<br>";
+        const desktopSep = "\u00A0\u00A0\u00A0|\u00A0\u00A0\u00A0";
+        const sep = isMobile ? mobileSep : desktopSep;
 
         // Update filtered counters
-        filteredSpan.textContent = 
+        filteredSpan.innerHTML = 
             `Free: ${state.countsFiltered["Free"]}${sep}Reasonable cost: ${state.countsFiltered["Reasonable cost"]}${sep}Mineral water or high price: ${state.countsFiltered["Mineral water or high price"]}`;
 
         // Update global totals
-        totalsDiv.textContent =
-            `Totals:\u00A0\u00A0\u00A0\u00A0\u00A0Free: ${state.countsTotal["Free"]}${sep}Reasonable cost: ${state.countsTotal["Reasonable cost"]}${sep}Mineral water or high price: ${state.countsTotal["Mineral water or high price"]}`;
+        totalsDiv.innerHTML =
+            `Totals:${isMobile ? '<br>' : '\u00A0\u00A0\u00A0\u00A0\u00A0'}Free: ${state.countsTotal["Free"]}${desktopSep}Reasonable cost: ${state.countsTotal["Reasonable cost"]}${desktopSep}Mineral water or high price: ${state.countsTotal["Mineral water or high price"]}`;
     }
 
     // Initialize the application when DOM is ready
@@ -1044,6 +1064,13 @@
     } else {
         document.addEventListener('DOMContentLoaded', init);
     }
+
+    // Add resize event listener
+    window.addEventListener('resize', function() {
+        if (state.allMarkers.length > 0) {
+            updateFilteredCounters();
+        }
+    });
 })();
 </script>
 
@@ -1056,4 +1083,3 @@
 </footer>
 </body>
 </html>
-
