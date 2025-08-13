@@ -1577,7 +1577,7 @@
     "Longitude": 4.3186408,
     "MapsURL": "https://www.google.com/maps/@52.0748107,4.3186408,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5b7afe90f2587:0xaadda356674b2aa5!8m2!3d52.0748107!4d4.3186408",
     "Tap Water Policy": "No, they charge high price",
-    "Comments": "2.75 per person or 3.75 per person with unlimited refills with krnwtr"
+    "Comments": "€2.75 per person or €3.75 per person with unlimited refills with krnwtr"
   },
   {
     "Restaurant Name": "Beers & Barrels",
@@ -1697,6 +1697,126 @@
     "Longitude": 4.9429877,
     "MapsURL": "https://www.google.com/maps/@52.3134561,4.9429877,17z/data=!3m1!4b1!4m5!3m4!1s0x47c60b97184f1c73:0xb6ffc98cc7e36698!8m2!3d52.3134561!4d4.9429877",
     "Tap Water Policy": "No, they charge high price",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Fortin",
+    "City": "Den Bosch",
+    "Address": "Ridderstraat 6",
+    "Latitude": 51.6883296,
+    "Longitude": 5.3036719,
+    "MapsURL": "https://www.google.com/maps/@51.6883296,5.3036719,17z/data=!3m1!4b1!4m5!3m4!1s0x47c6a12e77d12fa5:0x6ac3041199a64a5b!8m2!3d51.6883296!4d5.3036719",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Kwekkeboom",
+    "City": "Amsterdam",
+    "Address": "Ferdinand Bolstraat 119",
+    "Latitude": 52.3523867,
+    "Longitude": 4.8914357,
+    "MapsURL": "https://www.google.com/maps/@52.3523867,4.8914357,17z/data=!3m1!4b1!4m5!3m4!1s0x47c609f336e9dd4d:0x884b19ba8b95f7f9!8m2!3d52.3523867!4d4.8914357",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "New Taste Da Dong Bei",
+    "City": "Den Haag",
+    "Address": "Wagenstraat 137",
+    "Latitude": 52.0745958,
+    "Longitude": 4.3147803,
+    "MapsURL": "https://www.google.com/maps/@52.0745958,4.3147803,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5b721434ad2a9:0x8a28a153eeb78a50!8m2!3d52.0745958!4d4.3147803",
+    "Tap Water Policy": "Yes, at reasonable cost",
+    "Comments": "50 cents for tap water"
+  },
+  {
+    "Restaurant Name": "LUA",
+    "City": "Zwolle",
+    "Address": "Sassenstraat 56",
+    "Latitude": 52.5105994,
+    "Longitude": 6.09474,
+    "MapsURL": "https://www.google.com/maps/@52.5105994,6.09474,17z/data=!3m1!4b1!4m5!3m4!1s0x47c7df96ebefa781:0xe6e58f272932fea2!8m2!3d52.5105994!4d6.09474",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Café De Plak",
+    "City": "Nijmegen",
+    "Address": "Bloemerstraat 90",
+    "Latitude": 51.8454915,
+    "Longitude": 5.8613564,
+    "MapsURL": "https://www.google.com/maps/@51.8454915,5.8613564,17z/data=!3m1!4b1!4m5!3m4!1s0x47c708436b1c8303:0x877bf1695388e600!8m2!3d51.8454915!4d5.8613564",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "El Corazón",
+    "City": "Middelburg",
+    "Address": "Lange Noordstraat 4",
+    "Latitude": 51.4990608,
+    "Longitude": 3.6114285,
+    "MapsURL": "https://www.google.com/maps/@51.4990608,3.6114285,17z/data=!3m1!4b1!4m5!3m4!1s0x47c491006f6d14cb:0x45e46cb74d8f60a5!8m2!3d51.4990608!4d3.6114285",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Eetcafe H41",
+    "City": "Wageningen",
+    "Address": "Herenstraat 41",
+    "Latitude": 51.966455,
+    "Longitude": 5.664672,
+    "MapsURL": "https://www.google.com/maps/@51.966455,5.664672,17z/data=!3m1!4b1!4m5!3m4!1s0x47c7ab5ef30e7151:0x23357a4dae03be9b!8m2!3d51.966455!4d5.664672",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "De Gist",
+    "City": "Delft",
+    "Address": "Phoenixstraat 4C",
+    "Latitude": 52.0098747,
+    "Longitude": 4.3557053,
+    "MapsURL": "https://www.google.com/maps/@52.0098747,4.3557053,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5b5c154350545:0x3c9c4c5ef5678db9!8m2!3d52.0098747!4d4.3557053",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Brasserie Ultimo",
+    "City": "Nijmegen",
+    "Address": "Lage Markt 47",
+    "Latitude": 51.8497355,
+    "Longitude": 5.8626958,
+    "MapsURL": "https://www.google.com/maps/@51.8497355,5.8626958,17z/data=!3m1!4b1!4m5!3m4!1s0x47c709ed15c2e6a3:0xd977641eebbda055!8m2!3d51.8497355!4d5.8626958",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Anju Soju Bar",
+    "City": "Den Haag",
+    "Address": "Nobelstraat 7",
+    "Latitude": 52.0785746,
+    "Longitude": 4.306559,
+    "MapsURL": "https://www.google.com/maps/@52.0785746,4.306559,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5b7071c4b03cb:0xe9f10b0c1a0bf23d!8m2!3d52.0785746!4d4.306559",
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": 3.5
+  },
+  {
+    "Restaurant Name": "Kwekkeboom",
+    "City": "Amsterdam",
+    "Address": "Land van Cocagneplein 5",
+    "Latitude": 52.3569565,
+    "Longitude": 4.9284597,
+    "MapsURL": "https://www.google.com/maps/@52.3569565,4.9284597,17z/data=!3m1!4b1!4m5!3m4!1s0x47c609676f20cdcd:0x67cbad141760a448!8m2!3d52.3569565!4d4.9284597",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Kwekkeboom",
+    "City": "Amsterdam",
+    "Address": "Buikslotermeerplein 152",
+    "Latitude": 52.3979129,
+    "Longitude": 4.9373895,
+    "MapsURL": "https://www.google.com/maps/@52.3979129,4.9373895,17z/data=!3m1!4b1!4m5!3m4!1s0x47c608f065c6b8bf:0x2e678ef88a4dcadc!8m2!3d52.3979129!4d4.9373895",
+    "Tap Water Policy": "Yes, for free",
     "Comments": ""
   }
 ]
