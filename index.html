@@ -6,8 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Find restaurants in the Netherlands that offer free or fairly priced tap water">
 
-<!-- Favicon related to tap water -->
+<!-- Favicon -->
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5882/5882900.png" type="image/png">
+
+<!-- Flag Icon -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">
 
 <!-- Stylesheets -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
@@ -23,7 +26,6 @@
         --shadow-color: rgba(0,0,0,0.06);
         --content-width: 1120px;
     }
-
     @media (prefers-color-scheme: dark) {
         :root {
             --bg-color: linear-gradient(135deg, #1a2a3a 0%, #0f1a2a 100%);
@@ -32,22 +34,10 @@
             --secondary-text: #ccc;
             --shadow-color: rgba(0,0,0,0.2);
         }
-        
-        .header h1, .section h2 {
-            color: var(--text-color);
-        }
-        
-        .section p {
-            color: var(--secondary-text);
-        }
-        
-        #city-filter {
-            background-color: #2d3a44;
-            color: #eee;
-            border-color: #444;
-        }
+        .header h1, .section h2 { color: var(--text-color); }
+        .section p { color: var(--secondary-text); }
+        #city-filter { background-color: #2d3a44; color: #eee; border-color: #444; }
     }
-
     body {
         margin: 0;
         background: var(--bg-color);
@@ -55,7 +45,40 @@
         color: var(--text-color);
         transition: background 0.3s ease;
     }
-
+    /* Language switcher (top-right, outside header content) */
+    .lang-switcher {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 3000;
+        display: flex;
+        gap: 8px;
+        background: var(--card-bg);
+        border-radius: 18px;
+        box-shadow: 0 1px 6px var(--shadow-color);
+        padding: 6px;
+        align-items: center;
+    }
+    .lang-btn {
+        border: none;
+        cursor: pointer;
+        width: 30px;
+        height: 20px;
+        padding: 0;
+		border-radius: 3px;
+		overflow: hidden;
+		transition: background 0.2s, transform 0.05s;
+		background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .lang-btn.active {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 2px var(--text-color);
+    }
+    .lang-btn:active {
+        transform: scale(0.95);
+    }
     .header {
         background: var(--card-bg);
         margin: 20px auto 0;
@@ -65,7 +88,6 @@
         padding: 20px 0;
         text-align: center;
     }
-
     .header h1 {
         font-family: serif;
         font-size: 2.4em;
@@ -74,13 +96,7 @@
         letter-spacing: 0.5px;
         line-height: 1.2;
     }
-
-    .container {
-        max-width: var(--content-width);
-        margin: 0 auto;
-        padding: 0 16px;
-    }
-
+    .container { max-width: var(--content-width); margin: 0 auto; padding: 0 16px; }
     .section {
         background: var(--card-bg);
         margin-top: 14px;
@@ -88,468 +104,136 @@
         padding: 16px 20px;
         box-shadow: 0 1px 4px var(--shadow-color);
     }
+    .section h2 { font-family: serif; font-size: 1.5em; margin: 0 0 6px; font-weight: 400; }
+    .section p { font-size: 1.05em; color: var(--secondary-text); margin: 0; line-height: 1.5; }
+    .btn-wrap { text-align: center; margin: 24px 0 12px; }
+    .share-btn, .geo-btn {
+        color: #333; font-weight: 500; border: none; border-radius: 20px; cursor: pointer;
+        box-shadow: 0 1px 6px var(--shadow-color); transition: background 0.2s;
+    }
+    .share-btn { background: #b2c8f6; font-size: 1.2em; padding: 14px 36px; }
+    .share-btn:hover { background: #91b7ef; }
+    .geo-btn { background: #a0d6b4; font-size: 0.95em; padding: 10px 20px; margin-bottom: 10px; }
+    .geo-btn:hover { background: #7cc096; }
 
-    .section h2 {
-        font-family: serif;
-        font-size: 1.5em;
-        margin: 0 0 6px;
-        font-weight: 400;
-    }
+    #modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(50,60,90,0.45); align-items: center; justify-content: center; }
+    #modal-content { background: var(--card-bg); border-radius: 14px; max-width: 560px; width: 90vw; box-shadow: 0 2px 16px var(--shadow-color); position: relative; padding: 0; }
+    #modal-close { position: absolute; right: 16px; top: 8px; font-size: 1.8em; color: #bbb; background: none; border: none; cursor: pointer; z-index: 10; }
+    #modal-iframe { width: 100%; height: 560px; border: none; border-radius: 0 0 14px 14px; }
 
-    .section p {
-        font-size: 1.05em;
-        color: var(--secondary-text);
-        margin: 0;
-        line-height: 1.5;
-    }
+    .map-filter-wrapper { max-width: var(--content-width); margin: 8px auto 30px; padding: 0 16px; box-sizing: border-box; width: 100%; }
+    .filter-container { display: flex; gap: 16px; margin-bottom: 12px; background: transparent; padding: 0; box-shadow: none; width: 100%; }
+    #Category-Filters { flex: 2; background: rgba(255,255,255,0.6); border-radius: 6px; padding: 8px 12px; box-shadow: 0 0 8px rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; }
+    #City-Filter { flex: 1; background: rgba(255,255,255,0.6); border-radius: 6px; padding: 8px 12px; box-shadow: 0 0 8px rgba(0,0,0,0.1); min-width: 180px; }
+    #Filtered-Counters { width: 100%; max-width:100%; background: rgba(255,255,255,0.6); border-radius: 6px; padding: 8px 12px; box-shadow: 0 0 8px rgba(0,0,0,0.1); margin-bottom: 12px; justify-content: center; box-sizing: border-box; text-align: center; }
+    .map-wrap { width: 100%; margin: 0; border-radius: 10px; overflow: hidden; box-sizing: border-box; box-shadow: 0 1px 10px var(--shadow-color); }
+    #map { width: 100%; height: 400px; border: none; }
 
-    .btn-wrap {
-        text-align: center;
-        margin: 24px 0 12px;
-    }
+    .popup-content { font-size: 14px; line-height: 1.4; }
+    .popup-content a { color: #3498db; text-decoration: none; }
+    .popup-content a:hover { text-decoration: underline; }
+    .popup-content div { margin-bottom: 6px; }
 
-    .share-btn {
-        background: #b2c8f6;
-        color: #333;
-        font-size: 1.2em;
-        font-weight: 500;
-        border: none;
-        border-radius: 20px;
-        padding: 14px 36px;
-        cursor: pointer;
-        box-shadow: 0 1px 6px var(--shadow-color);
-        transition: background 0.2s;
-    }
+    .info.legend { display: flex; flex-wrap: wrap; align-items: center; font-size: 13px; line-height: 16px; color: var(--text-color); user-select: none; }
+    .info.legend label { display: flex; align-items: center; cursor: pointer; transition: opacity 0.3s; font-weight: 600; margin: 3px 6px 3px 0; }
+    .info.legend label input[type="checkbox"] { margin-right: 5px; cursor: pointer; width: 14px; height: 14px; }
+    .legend-color-box { width: 16px; height: 16px; border-radius: 3px; margin-right: 6px; flex-shrink: 0; }
+    #city-filter { font-size: 0.95em; padding: 5px 8px; border-radius: 5px; border: 1px solid #ccc; cursor: pointer; min-width: 160px; font-weight: 600; width: 100%; box-sizing: border-box; }
 
-    .share-btn:hover {
-        background: #91b7ef;
-    }
+    #category-counters-filtered, #totals-global { font-family: Arial, sans-serif; font-weight: 700; font-size: 1em; width: 100%; display: block; text-align: center; overflow-wrap: break-word; }
+    #totals-global { max-width: var(--content-width); margin: 18px auto 30px; font-size: 1.05em; }
 
-    .geo-btn {
-        background: #a0d6b4;
-        color: #333;
-        font-size: 0.95em;
-        font-weight: 500;
-        border: none;
-        border-radius: 20px;
-        padding: 10px 20px;
-        cursor: pointer;
-        box-shadow: 0 1px 6px var(--shadow-color);
-        transition: background 0.2s;
-        margin-bottom: 10px;
-    }
+    .accordion { background: var(--card-bg); border-radius: 10px; margin: 10px 0; padding: 0; max-width: var(--content-width); box-shadow: 0 1px 6px var(--shadow-color); }
+    .accordion-header { cursor: pointer; font-family: serif; font-size: 1.4em; padding: 10px 18px; font-weight: 600; user-select: none; display: flex; justify-content: space-between; align-items: center; }
+    .chevron { transition: transform 0.3s ease; }
+    .accordion-summary { padding: 8px 18px; font-size: 0.95em; color: var(--secondary-text); line-height: 1.4; }
+    .accordion-content { padding: 8px 18px 12px; font-size: 0.95em; color: var(--secondary-text); line-height: 1.5; display: none; }
+    .accordion.active .accordion-summary { display: none; }
+    .accordion.active .accordion-content { display: block; }
+    .chevron.rotate { transform: rotate(90deg); }
 
-    .geo-btn:hover {
-        background: #7cc096;
-    }
+    .contact-link { display: inline-block; margin: 12px auto 6px; font-weight: 600; color: #3366cc; cursor: pointer; text-decoration: underline; text-align: center; }
+    .custom-cluster-icon { border-radius: 50%; color: white; font-weight: bold; text-align: center; line-height: 36px; border: 2px solid white; box-shadow: 0 0 4px rgba(0,0,0,0.3); font-size: 1.1em; width: 36px; height: 36px; }
 
-    #modal {
-        display: none;
-        position: fixed;
-        z-index: 2000;
-        left: 0;
-        top: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(50,60,90,0.45);
-        align-items: center;
-        justify-content: center;
-    }
-
-    #modal-content {
-        background: var(--card-bg);
-        border-radius: 14px;
-        max-width: 560px;
-        width: 90vw;
-        box-shadow: 0 2px 16px var(--shadow-color);
-        position: relative;
-        padding: 0;
-    }
-
-    #modal-close {
-        position: absolute;
-        right: 16px;
-        top: 8px;
-        font-size: 1.8em;
-        color: #bbb;
-        background: none;
-        border: none;
-        cursor: pointer;
-        z-index: 10;
-    }
-
-    #modal-iframe {
-        width: 100%;
-        height: 560px;
-        border: none;
-        border-radius: 0 0 14px 14px;
-    }
-
-    .map-filter-wrapper {
-        max-width: var(--content-width);
-        margin: 8px auto 30px;
-        padding: 0 16px;
-        box-sizing: border-box;
-        width: 100%;
-    }
-
-    .filter-container {
-        display: flex;
-        gap: 16px;
-        margin-bottom: 12px;
-        background: transparent;
-        padding: 0;
-        box-shadow: none;
-        width: 100%;
-    }
-
-    #Category-Filters {
-        flex: 2;
-        background: rgba(255,255,255,0.6);
-        border-radius: 6px;
-        padding: 8px 12px;
-        box-shadow: 0 0 8px rgba(0,0,0,0.1);
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    #City-Filter {
-        flex: 1;
-        background: rgba(255,255,255,0.6);
-        border-radius: 6px;
-        padding: 8px 12px;
-        box-shadow: 0 0 8px rgba(0,0,0,0.1);
-        min-width: 180px;
-    }
-
-    #Filtered-Counters {
-        width: 100%;
-        max-width:100%;
-        background: rgba(255,255,255,0.6);
-        border-radius: 6px;
-        padding: 8px 12px;
-        box-shadow: 0 0 8px rgba(0,0,0,0.1);
-        margin-bottom: 12px;
-        justify-content: center;
-        box-sizing: border-box;
-        text-align: center;
-    }
-
-    .map-wrap {
-        width: 100%;
-        margin: 0;
-        border-radius: 10px;
-        overflow: hidden;
-        box-sizing: border-box;
-        box-shadow: 0 1px 10px var(--shadow-color);
-    }
-
-    #map {
-        width: 100%;
-        height: 400px;
-        border: none;
-    }
-
-    .popup-content {
-        font-size: 14px;
-        line-height: 1.4;
-    }
-    .popup-content a {
-        color: #3498db;
-        text-decoration: none;
-    }
-    .popup-content a:hover {
-        text-decoration: underline;
-    }
-    .popup-content div {
-        margin-bottom: 6px;
-    }
-
-    .info.legend {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        font-size: 13px;
-        line-height: 16px;
-        color: var(--text-color);
-        user-select: none;
-    }
-
-    .info.legend label {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        transition: opacity 0.3s;
-        font-weight: 600;
-        margin: 3px 6px 3px 0;
-    }
-
-    .info.legend label input[type="checkbox"] {
-        margin-right: 5px;
-        cursor: pointer;
-        width: 14px;
-        height: 14px;
-    }
-
-    .legend-color-box {
-        width: 16px;
-        height: 16px;
-        border-radius: 3px;
-        margin-right: 6px;
-        flex-shrink: 0;
-    }
-
-    #city-filter {
-        font-size: 0.95em;
-        padding: 5px 8px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        cursor: pointer;
-        min-width: 160px;
-        font-weight: 600;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    #category-counters-filtered, #totals-global {
-        font-family: Arial, sans-serif;
-        font-weight: 700;
-        font-size: 1em;
-        width: 100%;
-        display: block;
-        text-align: center;
-        overflow-wrap: break-word;
-    }
-
-    #totals-global {
-        max-width: var(--content-width);
-        margin: 18px auto 30px;
-        font-size: 1.05em;
-    }
-
-    .accordion {
-        background: var(--card-bg);
-        border-radius: 10px;
-        margin: 10px 0;
-        padding: 0;
-        max-width: var(--content-width);
-        box-shadow: 0 1px 6px var(--shadow-color);
-    }
-
-    .accordion-header {
-        cursor: pointer;
-        font-family: serif;
-        font-size: 1.4em;
-        padding: 10px 18px;
-        font-weight: 600;
-        user-select: none;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .chevron {
-        transition: transform 0.3s ease;
-    }
-
-    .accordion-summary {
-        padding: 8px 18px;
-        font-size: 0.95em;
-        color: var(--secondary-text);
-        line-height: 1.4;
-    }
-
-    .accordion-content {
-        padding: 8px 18px 12px;
-        font-size: 0.95em;
-        color: var(--secondary-text);
-        line-height: 1.5;
-        display: none;
-    }
-
-    .accordion.active .accordion-summary {
-        display: none;
-    }
-
-    .accordion.active .accordion-content {
-        display: block;
-    }
-
-    .chevron.rotate {
-        transform: rotate(90deg);
-    }
-
-    .contact-link {
-        display: inline-block;
-        margin: 12px auto 6px;
-        font-weight: 600;
-        color: #3366cc;
-        cursor: pointer;
-        text-decoration: underline;
-        text-align: center;
-    }
-
-    .custom-cluster-icon {
-        border-radius: 50%;
-        color: white;
-        font-weight: bold;
-        text-align: center;
-        line-height: 36px;
-        border: 2px solid white;
-        box-shadow: 0 0 4px rgba(0,0,0,0.3);
-        font-size: 1.1em;
-        width: 36px;
-        height: 36px;
-    }
-
-    #loading-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255,255,255,0.9);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-    }
-
-    .spinner {
-        border: 4px solid #f3f3f3;
-        border-top: 4px solid #3498db;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        animation: spin 1s linear infinite;
-        margin-bottom: 12px;
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
+    #loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; }
+    .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin-bottom: 12px; }
+    @keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }
 
     @media (prefers-color-scheme: dark) {
-        #Category-Filters,
-        #City-Filter,
-        #Filtered-Counters {
-            background: rgba(30,40,50,0.6);
-        }
+        #Category-Filters, #City-Filter, #Filtered-Counters { background: rgba(30,40,50,0.6); }
     }
-
     @media (max-width: 700px) {
-        .header, .container, .map-wrap {
-            max-width: 98vw;
-        }
-        .header {
-            margin: 12px auto 0;
-            padding: 16px 0;
-        }
-        .header h1 {
-            font-size: 1.8em;
-        }
-        .section {
-            padding: 12px 14px;
-            margin-top: 10px;
-        }
-        .section h2 {
-            font-size: 1.3em;
-        }
-        #map {
-            height: 240px;
-        }
-        #modal-iframe {
-            height: 360px;
-        }
-        .share-btn {
-            padding: 12px 28px;
-            font-size: 1.1em;
-        }
-        .geo-btn {
-            padding: 8px 16px;
-            font-size: 0.85em;
-        }
-        .accordion-header {
-            font-size: 1.2em;
-            padding: 8px 14px;
-        }
-        .accordion-summary,
-        .accordion-content {
-            padding: 6px 14px 10px;
-            font-size: 0.9em;
-        }
-        .filter-container {
-            flex-direction: column;
-            gap: 8px;
-        }
-        #Category-Filters,
-        #City-Filter,
-        #Filtered-Counters {
-            width: 100%;
-            box-sizing: border-box;
-        }
-        #city-filter {
-            width: 100%;
-            min-width: 100%;
-        }
-        #category-counters-filtered, #totals-global {
-            font-size: 0.9em;
-            white-space: normal;
-        }
-        #Filtered-Counters {
-            padding: 6px 8px;
-        }
+        .header, .container, .map-wrap { max-width: 98vw; }
+        .header { margin: 12px auto 0; padding: 16px 0; }
+        .header h1 { font-size: 1.8em; }
+        .section { padding: 12px 14px; margin-top: 10px; }
+        .section h2 { font-size: 1.3em; }
+        #map { height: 240px; }
+        #modal-iframe { height: 360px; }
+        .share-btn { padding: 12px 28px; font-size: 1.1em; }
+        .geo-btn { padding: 8px 16px; font-size: 0.85em; }
+        .accordion-header { font-size: 1.2em; padding: 8px 14px; }
+        .accordion-summary, .accordion-content { padding: 6px 14px 10px; font-size: 0.9em; }
+        .filter-container { flex-direction: column; gap: 8px; }
+        #Category-Filters, #City-Filter, #Filtered-Counters { width: 100%; box-sizing: border-box; }
+        #city-filter { width: 100%; min-width: 100%; }
+        #category-counters-filtered, #totals-global { font-size: 0.9em; white-space: normal; }
+        #Filtered-Counters { padding: 6px 8px; }
     }
 </style>
 </head>
 <body>
+<!-- Language Switcher (top-right) -->
+<div class="lang-switcher" role="group" aria-label="Language selector">
+	<button id="btn-en" class="fi fi-gb lang-btn" data-lang="en" title="English" aria-label="English"></button>
+	<button id="btn-nl" class="fi fi-nl lang-btn" data-lang="nl" title="Nederlands" aria-label="Nederlands"></button>
+</div>
+
 <div id="loading-overlay">
     <div class="spinner"></div>
-    <p>Loading restaurant data...</p>
+    <p id="loading-text">Loading restaurant data...</p>
 </div>
 
 <div class="header">
-    <h1>Discover restaurants with fairly priced tap water!</h1>
+    <h1 id="title">Discover restaurants with fairly priced tap water!</h1>
 </div>
 <div class="container">
     <div class="accordion" id="intro-accordion">
-        <div class="accordion-header">Introduction<span class="chevron">&gt;</span></div>
-        <div class="accordion-summary">
+        <div class="accordion-header"><span id="intro_title">Introduction</span><span class="chevron">&gt;</span></div>
+        <div class="accordion-summary" id="intro_summary">
             Paying €3 for a glass of water? In the Netherlands, some restaurants overcharge for bottled water while others offer tap water fairly. We map them.
         </div>
-        <div class="accordion-content">
+        <div class="accordion-content" id="intro_content">
             In the Netherlands, it's common for restaurants and cafés to charge exorbitant prices for bottled water. This practice often leads to frustration among clients who feel compelled to pay for something that should be freely available. Our initiative aims to highlight establishments that offer tap water at no or minimal cost, promoting transparency and encouraging others to adopt similar practices.
         </div>
     </div>
 
     <div class="accordion" id="objective-accordion">
-        <div class="accordion-header">Objective<span class="chevron">&gt;</span></div>
-        <div class="accordion-summary">
+        <div class="accordion-header"><span id="objective_title">Objective</span><span class="chevron">&gt;</span></div>
+        <div class="accordion-summary" id="objective_summary">
             We aim to build a list of places offering <b>fairly priced tap water</b>, provided as a courtesy typically upon ordering other items, promoting fairness and sustainability.
         </div>
-        <div class="accordion-content">
+        <div class="accordion-content" id="objective_content">
             Our goal is to create a collaborative database of restaurants and cafés that provide <b>fairly priced tap water</b>. This means tap water offered as a courtesy, usually upon ordering other items. By showcasing these establishments, we hope to inspire others to follow suit and foster a culture of fairness and sustainability in the hospitality industry.
         </div>
     </div>
 
     <div class="accordion" id="help-accordion">
-        <div class="accordion-header">How You Can Help<span class="chevron">&gt;</span></div>
-        <div class="accordion-summary">
+        <div class="accordion-header"><span id="help_title">How You Can Help</span><span class="chevron">&gt;</span></div>
+        <div class="accordion-summary" id="help_summary">
             Share details of restaurants offering free or affordable tap water to help expand our database and foster change.
         </div>
-        <div class="accordion-content">
+        <div class="accordion-content" id="help_content">
             If you know of a restaurant or café that offers free or affordable tap water, please share their details with us. Your contributions will help expand our database and promote positive change in the industry. Together, we can make a difference and encourage more businesses to adopt transparent and fair practices.
         </div>
     </div>
 
     <div class="btn-wrap">
-        <button class="share-btn">Share Details</button>
+        <button class="share-btn" id="share_btn">Share Details</button>
     </div>
 
     <div style="text-align:center">
-        <a class="contact-link" href="mailto:contact@fairtapwater.com?subject=Tap Water Info Confirmation" rel="noopener noreferrer" target="_blank">
+        <a class="contact-link" id="contact_link" href="mailto:contact@fairtapwater.com?subject=Tap Water Info Confirmation" rel="noopener noreferrer" target="_blank">
             Restaurant owner? Confirm or correct your listing here.
         </a>
     </div>
@@ -578,19 +262,127 @@
 
 <div id="modal" aria-hidden="true">
     <div id="modal-content">
-        <button id="modal-close">×</button>
+        <button id="modal-close" aria-label="Close">×</button>
         <iframe id="modal-iframe" src="https://app.youform.com/forms/ubbqidvt" title="Share restaurant details form" loading="lazy"></iframe>
     </div>
 </div>
 
-<!-- Scripts at the end of body for better performance -->
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+<script>
+/* =======================
+   Simple i18n loader
+   ======================= */
+const I18N = {
+  lang: 'en',
+  dict: {},
+  supported: ['en','nl'],
+  async init() {
+    const urlLang = new URLSearchParams(location.search).get('lang');
+    const stored = localStorage.getItem('lang');
+    const browser = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+    const auto = browser.startsWith('nl') ? 'nl' : 'en';
+    const chosen = (urlLang && this.supported.includes(urlLang)) ? urlLang : (stored || auto);
+    await this.setLang(chosen);
+  },
+  async setLang(lang) {
+    if (!this.supported.includes(lang)) lang = 'en';
+    this.lang = lang;
+    const res = await fetch(`translations/${lang}.json`, { cache: 'no-store' });
+    this.dict = await res.json();
+    localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang;
+    this.apply();
+    this.updateMeta();
+    this.updateLangButtons();
+  },
+  t(path, params={}) {
+    const parts = path.split('.');
+    let cur = this.dict;
+    for (const p of parts) { if (cur && p in cur) cur = cur[p]; else return path; }
+    if (typeof cur === 'string') {
+      return cur.replace(/\{(\w+)\}/g, (_,k)=> params[k] ?? '');
+    }
+    return path;
+  },
+  updateMeta() {
+    document.title = this.t('title');
+    const m = document.querySelector('meta[name="description"]');
+    if (m) m.setAttribute('content', this.t('meta_description'));
+  },
+  apply() {
+    // Static texts
+    const map = {
+      'title': 'title',
+      'intro_title': 'intro_title',
+      'intro_summary': 'intro_summary',
+      'intro_content': 'intro_content',
+      'objective_title': 'objective_title',
+      'objective_summary': 'objective_summary',
+      'objective_content': 'objective_content',
+      'help_title': 'help_title',
+      'help_summary': 'help_summary',
+      'help_content': 'help_content',
+      'share_btn': 'share_btn',
+      'contact_link': 'contact_link',
+      'loading-text': 'loading',
+      'geo-btn': 'find_near'
+    };
+    for (const [id,key] of Object.entries(map)) {
+      const el = document.getElementById(id);
+      if (!el) continue;
+      if (id === 'intro_summary' || id === 'objective_summary' || id === 'intro_content' || id === 'objective_content' || id === 'help_summary' || id === 'help_content') {
+        el.innerHTML = this.t(key);
+      } else {
+        el.textContent = this.t(key);
+      }
+    }
+    // Totals (initial)
+    const totalsDiv = document.getElementById('totals-global');
+    totalsDiv.innerHTML = this.t('totals_label', { free: 0, reasonable: 0, high: 0 });
+
+    // City filter placeholder
+    const cityFilter = document.getElementById('city-filter');
+    if (cityFilter) {
+      const opt = cityFilter.querySelector('option[value="all"]');
+      if (opt) opt.textContent = this.t('all_cities');
+    }
+
+    // Rebuild filters (to update category labels)
+    if (window.App && typeof window.App.rebuildFilters === 'function') {
+      window.App.rebuildFilters();
+    }
+  },
+  updateLangButtons() {
+    document.querySelectorAll('.lang-btn').forEach(btn=>{
+      btn.classList.toggle('active', btn.dataset.lang === this.lang);
+    });
+  },
+  categoryLabel(key) { // internal -> display
+    return this.t(`categories.${key}`) || key;
+  }
+};
+
+// language buttons
+document.addEventListener('click', (e)=>{
+  if (e.target.matches('.lang-btn')) {
+    const lang = e.target.dataset.lang;
+    I18N.setLang(lang);
+  }
+});
+</script>
+
 <script>
 (function() {
     'use strict';
-    
-    // Configuration object for the application
+
+    // Make app API accessible for i18n refresh
+    const App = {};
+    window.App = App;
+
+    // Configuration
     const config = {
         categories: ["Free", "Reasonable cost", "Mineral water or high price"],
         colorMap: {
@@ -598,28 +390,28 @@
             "Reasonable cost": "orange",
             "Mineral water or high price": "red"
         },
-        initialView: [52.37, 4.89], // Initial map view centered on the Netherlands
+        initialView: [52.37, 4.89],
         initialZoom: 7,
         defaultFilterState: {
             "Free": true,
             "Reasonable cost": true,
             "Mineral water or high price": true
         },
-        cacheTTL: 86400000 // Cache time-to-live in milliseconds (24 hours)
+        cacheTTL: 86400000 // 24h
     };
 
-    // DOM elements cache
+    // DOM cache
     const elements = {
         modal: document.getElementById('modal'),
         map: null,
         markerClusterGroup: null,
         loadingOverlay: document.getElementById('loading-overlay'),
         geoBtn: document.getElementById('geo-btn'),
-        shareBtn: document.querySelector('.share-btn'),
+        shareBtn: document.getElementById('share_btn'),
         modalClose: document.getElementById('modal-close')
     };
 
-    // Application state
+    // State
     const state = {
         countsTotal: { "Free": 0, "Reasonable cost": 0, "Mineral water or high price": 0 },
         countsFiltered: { "Free": 0, "Reasonable cost": 0, "Mineral water or high price": 0 },
@@ -627,8 +419,17 @@
         filterState: {...config.defaultFilterState}
     };
 
-    // Main initialization function
-    function init() {
+    // Public method for i18n to rebuild filters/labels
+    App.rebuildFilters = function() {
+        const cityFilter = document.getElementById('city-filter');
+        const cities = cityFilter ? Array.from(cityFilter.options).slice(1).map(o=>o.value) : [];
+        buildFilterUI(cities);
+        applyFilters();
+    };
+
+    // Entry
+    async function bootstrap() {
+        await I18N.init();
         state.filterState = loadFilterState();
         setupModal();
         setupAccordions();
@@ -638,53 +439,43 @@
         setupEventListeners();
     }
 
-    // Set up event listeners for buttons and interactive elements
     function setupEventListeners() {
         elements.shareBtn.addEventListener('click', openModal);
         elements.modalClose.addEventListener('click', closeModal);
     }
 
-    // Set up modal dialog functionality
     function setupModal() {
         elements.modal.addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
     }
-
-    // Open the modal dialog
     function openModal() {
         elements.modal.style.display = "flex";
         elements.modal.setAttribute("aria-hidden", "false");
     }
-
-    // Close the modal dialog
     function closeModal() {
         elements.modal.style.display = "none";
         elements.modal.setAttribute("aria-hidden", "true");
     }
 
-    // Set up geolocation functionality
     function setupGeolocation() {
         if (!navigator.geolocation) {
             elements.geoBtn.style.display = 'none';
             return;
         }
-        
         elements.geoBtn.addEventListener('click', function() {
-            elements.geoBtn.textContent = 'Locating...';
+            elements.geoBtn.textContent = I18N.t('locating');
             elements.geoBtn.disabled = true;
-            
             navigator.geolocation.getCurrentPosition(
                 (pos) => {
                     elements.map.setView([pos.coords.latitude, pos.coords.longitude], 13);
-                    elements.geoBtn.textContent = '📍 Find Near Me';
+                    elements.geoBtn.textContent = I18N.t('find_near');
                     elements.geoBtn.disabled = false;
                 },
-                (err) => {
-                    console.error("Geolocation error:", err);
-                    elements.geoBtn.textContent = '❌ Location Failed';
+                () => {
+                    elements.geoBtn.textContent = I18N.t('location_failed');
                     setTimeout(() => {
-                        elements.geoBtn.textContent = '📍 Find Near Me';
+                        elements.geoBtn.textContent = I18N.t('find_near');
                         elements.geoBtn.disabled = false;
                     }, 2000);
                 },
@@ -693,7 +484,6 @@
         });
     }
 
-    // Set up accordion functionality
     function setupAccordions() {
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
@@ -705,14 +495,12 @@
         });
     }
 
-    // Initialize the Leaflet map
     function loadMap() {
         elements.map = L.map("map").setView(config.initialView, config.initialZoom);
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
             attribution: "&copy; OpenStreetMap contributors",
         }).addTo(elements.map);
 
-        // Initialize marker cluster group
         elements.markerClusterGroup = L.markerClusterGroup({
             iconCreateFunction: createClusterIcon,
             spiderfyOnMaxZoom: true,
@@ -722,36 +510,24 @@
         elements.map.addLayer(elements.markerClusterGroup);
     }
 
-    // Create custom cluster icons based on the dominant category
     function createClusterIcon(cluster) {
         const markers = cluster.getAllChildMarkers();
         const counts = {};
-        
-        // Count markers by category
         markers.forEach(m => {
             const category = m.options.category || (m.data && m.data.category) || 'Unknown';
             counts[category] = (counts[category] || 0) + 1;
         });
-
-        // Find the dominant category
         let dominantCategory = null;
         let maxCount = 0;
         for (const cat in counts) {
-            if (counts[cat] > maxCount) {
-                maxCount = counts[cat];
-                dominantCategory = cat;
-            }
+            if (counts[cat] > maxCount) { maxCount = counts[cat]; dominantCategory = cat; }
         }
-
-        // Define cluster colors based on category
         const clusterColors = {
             "Free": "green",
             "Reasonable cost": "orange",
             "Mineral water or high price": "red"
         };
         const color = clusterColors[dominantCategory] || "blue";
-
-        // Return a custom div icon for the cluster
         return L.divIcon({
             html: `<div style="background-color:${color};" class="custom-cluster-icon">${cluster.getChildCount()}</div>`,
             className: 'custom-cluster-icon',
@@ -759,25 +535,20 @@
         });
     }
 
-    // Fetch restaurant data from JSON file or cache
     function fetchData() {
         elements.loadingOverlay.style.display = 'flex';
-        
-        // Check for cached data first
+        document.getElementById('loading-text').textContent = I18N.t('loading');
         const cachedData = localStorage.getItem('restaurantsCache');
         const cacheTime = localStorage.getItem('restaurantsCacheTime');
-        
         if (cachedData && cacheTime && Date.now() - cacheTime < config.cacheTTL) {
             processData(JSON.parse(cachedData));
             elements.loadingOverlay.style.display = 'none';
-            fetchFreshData(); // Fetch fresh data in background
+            fetchFreshData();
             return;
         }
-        
         fetchFreshData();
     }
-    
-    // Fetch fresh data from the server
+
     function fetchFreshData() {
         fetch('restaurants.json')
             .then(res => {
@@ -790,71 +561,49 @@
                 processData(data);
                 elements.loadingOverlay.style.display = 'none';
             })
-            .catch(err => {
+            .catch(() => {
                 elements.loadingOverlay.style.display = 'none';
-                handleDataError(err);
+                handleDataError();
             });
     }
 
-    // Process the restaurant data and create markers
     function processData(data) {
-        // Reset markers and counters
         state.allMarkers = [];
         state.countsTotal = { "Free": 0, "Reasonable cost": 0, "Mineral water or high price": 0 };
 
-        // Get unique cities for filter dropdown
         const cities = Array.from(new Set(data.map(d => d.City))).sort();
-        
-        // Create markers for each restaurant
         data.forEach(item => createMarker(item));
-        
-        // Build the filter UI
         buildFilterUI(cities);
-        
-        // Apply initial filters
         applyFilters();
     }
 
-    // Handle data loading errors
-    function handleDataError(err) {
-        console.error("Error loading restaurants data:", err);
+    function handleDataError() {
         const cachedData = localStorage.getItem('restaurantsCache');
         if (cachedData) {
-            console.log("Falling back to cached data");
             processData(JSON.parse(cachedData));
         } else {
-            alert("Could not load restaurant data. Please try again later.");
+            alert(I18N.t('load_error'));
         }
     }
 
-    // Create a marker for a restaurant
     function createMarker(item) {
-        // Determine category based on tap water policy
         const category = getCategory(item["Tap Water Policy"]);
         state.countsTotal[category]++;
-        
-        // Check for existing marker at same location
         const existingMarker = state.allMarkers.find(m => 
             m.marker.getLatLng().lat === item.Latitude && 
             m.marker.getLatLng().lng === item.Longitude
         );
         if (existingMarker) return;
 
-        // Create new marker
         const marker = L.marker([item.Latitude, item.Longitude], {
             icon: getColoredIcon(category),
             category: category,
-            data: {
-                category: category,
-                city: item.City
-            }
+            data: { category: category, city: item.City }
         });
 
-        // Bind popup with restaurant information
         marker.bindPopup(`
             <div class="popup-content">
-                <div><a href="${item.MapsURL}" target="_blank" rel="noopener noreferrer"
-                    style="color: inherit; text-decoration: none;">
+                <div><a href="${item.MapsURL}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
                     <strong>${item["Restaurant Name"]}</strong>
                 </a></div>
                 <div>📍 <a href="${item.MapsURL}" target="_blank" rel="noopener noreferrer" style="color: #3498db; text-decoration: underline;">
@@ -865,11 +614,9 @@
             </div>
         `);
 
-        // Add marker to the collection
         state.allMarkers.push({marker, data: {category, city: item.City}});
     }
 
-    // Determine category based on tap water policy
     function getCategory(policy) {
         switch(policy) {
             case "No, they charge high price": return "Mineral water or high price";
@@ -879,47 +626,36 @@
         }
     }
 
-    // Get colored icon based on category
     function getColoredIcon(category) {
         const color = config.colorMap[category] || "blue";
         return new L.Icon({
             iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${color.replace('#','')}.png`,
             shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [1, -34],
-            shadowSize: [41, 41]
+            iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
         });
     }
 
-    // Load filter state from localStorage
     function loadFilterState() {
         const saved = localStorage.getItem("tapWaterFilters");
         if (saved) return JSON.parse(saved);
         return {...config.defaultFilterState};
     }
-
-    // Save filter state to localStorage
-    function saveFilterState(state) {
-        localStorage.setItem("tapWaterFilters", JSON.stringify(state));
+    function saveFilterState(stateObj) {
+        localStorage.setItem("tapWaterFilters", JSON.stringify(stateObj));
     }
 
-    // Build the filter UI (category checkboxes and city dropdown)
     function buildFilterUI(cities) {
         const categoryContainer = document.getElementById('Category-Filters');
         const cityContainer = document.getElementById('City-Filter');
         const countersContainer = document.getElementById('Filtered-Counters');
-        
-        // Clear existing content
         categoryContainer.innerHTML = '';
         cityContainer.innerHTML = '';
         countersContainer.innerHTML = '';
 
-        // Create category filter checkboxes
+        // Category checkboxes with localized labels
         config.categories.forEach(category => {
             const safeId = category.replace(/\s+/g, "_");
             const color = config.colorMap[category];
-
             const label = document.createElement('label');
             label.id = 'label_' + safeId;
             
@@ -931,6 +667,7 @@
             checkbox.setAttribute('aria-checked', checkbox.checked);
             checkbox.setAttribute('role', 'checkbox');
             checkbox.setAttribute('tabindex', '0');
+            checkbox.setAttribute('aria-labelledby', 'label_' + safeId);
 
             const colorBox = document.createElement('span');
             colorBox.className = 'legend-color-box';
@@ -938,16 +675,20 @@
 
             label.appendChild(checkbox);
             label.appendChild(colorBox);
-            label.appendChild(document.createTextNode(category));
+            label.appendChild(document.createTextNode(I18N.categoryLabel(category)));
             categoryContainer.appendChild(label);
         });
 
-        // Create city filter dropdown
+        // City filter
         const citySelect = document.createElement('select');
         citySelect.id = 'city-filter';
         citySelect.setAttribute('aria-label', 'Filter by city');
         citySelect.title = 'Filter by city';
-        citySelect.innerHTML = '<option value="all" selected>All cities</option>';
+        const first = document.createElement('option');
+        first.value = 'all';
+        first.selected = true;
+        first.textContent = I18N.t('all_cities');
+        citySelect.appendChild(first);
 
         cities.forEach(city => {
             const option = document.createElement('option');
@@ -957,90 +698,66 @@
         });
         cityContainer.appendChild(citySelect);
 
-        // Create filtered counters display
+        // Filtered counters display
         const filteredCountersSpan = document.createElement('span');
         filteredCountersSpan.id = 'category-counters-filtered';
         filteredCountersSpan.setAttribute('aria-live', 'polite');
         filteredCountersSpan.setAttribute('aria-atomic', 'true');
         countersContainer.appendChild(filteredCountersSpan);
 
-        // Set up event listeners for checkboxes
         setupLegendCheckboxes();
-        
-        // Add change listener for city filter
         citySelect.addEventListener('change', () => applyFilters());
     }
 
-    // Set up event listeners for legend checkboxes
     function setupLegendCheckboxes() {
         document.querySelectorAll('.legend-checkbox').forEach(checkbox => {
             checkbox.addEventListener('change', e => {
                 const category = e.target.dataset.category;
                 const label = document.getElementById("label_" + category.replace(/\s+/g, "_"));
                 const checked = e.target.checked;
-                
-                // Update label opacity based on checked state
                 label.style.opacity = checked ? "1" : "0.4";
-                
-                // Update filter state
                 state.filterState[category] = checked;
                 saveFilterState(state.filterState);
-                
-                // Apply filters
                 applyFilters();
             });
         });
     }
 
-    // Apply current filters to markers
     function applyFilters() {
-        const cityFilter = document.getElementById('city-filter').value;
-        
-        // Clear existing markers
+        const cityFilterEl = document.getElementById('city-filter');
+        const cityFilter = cityFilterEl ? cityFilterEl.value : 'all';
+		if (!elements.markerClusterGroup) return;
         elements.markerClusterGroup.clearLayers();
         resetFilteredCounts();
 
-        // Filter markers based on current selections
         const filteredMarkers = state.allMarkers.filter(({ data }) => {
             const cat = data.category;
             const cityMatch = cityFilter === 'all' || data.city === cityFilter;
             return state.filterState[cat] && cityMatch;
         });
 
-        // Add filtered markers to the map
         filteredMarkers.forEach(({ marker, data }) => {
             elements.markerClusterGroup.addLayer(marker);
             state.countsFiltered[data.category]++;
         });
 
-        // Update counters and adjust map view
         updateFilteredCounters();
         adjustMapView(filteredMarkers);
     }
 
-    // Reset filtered counters
     function resetFilteredCounts() {
-        state.countsFiltered = {
-            "Free": 0,
-            "Reasonable cost": 0,
-            "Mineral water or high price": 0
-        };
+        state.countsFiltered = { "Free": 0, "Reasonable cost": 0, "Mineral water or high price": 0 };
     }
 
-    // Adjust map view to show filtered markers
     function adjustMapView(filteredMarkers) {
         if (filteredMarkers.length === 0) {
-            // If no markers match filters, reset to initial view
             elements.map.setView(config.initialView, config.initialZoom);
             return;
         }
-        
-        // Create a feature group and fit bounds to show all filtered markers
         const group = new L.featureGroup(filteredMarkers.map(m => m.marker));
         elements.map.fitBounds(group.getBounds().pad(0.1));
     }
 
-    // Update the filtered counters display
     function updateFilteredCounters() {
         const filteredSpan = document.getElementById('category-counters-filtered');
         const totalsDiv = document.getElementById('totals-global');
@@ -1049,23 +766,26 @@
         const desktopSep = "\u00A0\u00A0\u00A0|\u00A0\u00A0\u00A0";
         const sep = isMobile ? mobileSep : desktopSep;
 
-        // Update filtered counters
+        // Localized category labels
+        const LBL = (k)=> I18N.categoryLabel(k);
+
         filteredSpan.innerHTML = 
-            `Free: ${state.countsFiltered["Free"]}${sep}Reasonable cost: ${state.countsFiltered["Reasonable cost"]}${sep}Mineral water or high price: ${state.countsFiltered["Mineral water or high price"]}`;
+            `${LBL("Free")}: ${state.countsFiltered["Free"]}${sep}${LBL("Reasonable cost")}: ${state.countsFiltered["Reasonable cost"]}${sep}${LBL("Mineral water or high price")}: ${state.countsFiltered["Mineral water or high price"]}`;
 
-        // Update global totals
-        totalsDiv.innerHTML =
-            `Totals:${isMobile ? '<br>' : '\u00A0\u00A0\u00A0\u00A0\u00A0'}Free: ${state.countsTotal["Free"]}${desktopSep}Reasonable cost: ${state.countsTotal["Reasonable cost"]}${desktopSep}Mineral water or high price: ${state.countsTotal["Mineral water or high price"]}`;
+        totalsDiv.innerHTML = I18N.t('totals_label', {
+            free: state.countsTotal["Free"],
+            reasonable: state.countsTotal["Reasonable cost"],
+            high: state.countsTotal["Mineral water or high price"]
+        });
     }
 
-    // Initialize the application when DOM is ready
+    // Initialize after DOM ready & i18n
     if (document.readyState !== 'loading') {
-        init();
+        bootstrap();
     } else {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', bootstrap);
     }
 
-    // Add resize event listener
     window.addEventListener('resize', function() {
         if (state.allMarkers.length > 0) {
             updateFilteredCounters();
@@ -1076,7 +796,7 @@
 
 <footer style="text-align:center;margin-top:16px;font-size:0.8em;color:#555">
     <p>
-        <a href="privacy.html" target="_blank" style="color:inherit;text-decoration:underline">
+        <a id="privacy_link" href="privacy.html" target="_blank" style="color:inherit;text-decoration:underline">
             Privacy Policy
         </a>
     </p>
