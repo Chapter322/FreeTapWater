@@ -1617,7 +1617,7 @@
     "Longitude": 4.8788041,
     "MapsURL": "https://www.google.com/maps/@52.372763,4.8788041,17z/data=!3m1!4b1!4m5!3m4!1s0x47c609db80601bad:0x8fe31b74f68e9a22!8m2!3d52.372763!4d4.8788041",
     "Tap Water Policy": "No, they charge high price",
-    "Comments": "5 euros per bottle of tap water"
+    "Comments": "€5 per bottle of tap water"
   },
   {
     "Restaurant Name": "Pesca Seafood Restaurant",
@@ -1627,7 +1627,7 @@
     "Longitude": 4.4868283,
     "MapsURL": "https://www.google.com/maps/@51.9226992,4.4868283,17z/data=!3m1!4b1!4m5!3m4!1s0x47c433312251506d:0x748b81a345ad0c3d!8m2!3d51.9226992!4d4.4868283",
     "Tap Water Policy": "No, they charge high price",
-    "Comments": "5 euros per bottle of tap water"
+    "Comments": "€5 per bottle of tap water"
   },
   {
     "Restaurant Name": "Strøming",
@@ -1797,7 +1797,7 @@
     "Longitude": 4.306559,
     "MapsURL": "https://www.google.com/maps/@52.0785746,4.306559,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5b7071c4b03cb:0xe9f10b0c1a0bf23d!8m2!3d52.0785746!4d4.306559",
     "Tap Water Policy": "No, they charge high price",
-    "Comments": 3.5
+    "Comments": "€3.5 for small bottle"
   },
   {
     "Restaurant Name": "Kwekkeboom",
@@ -1816,6 +1816,16 @@
     "Latitude": 52.3979129,
     "Longitude": 4.9373895,
     "MapsURL": "https://www.google.com/maps/@52.3979129,4.9373895,17z/data=!3m1!4b1!4m5!3m4!1s0x47c608f065c6b8bf:0x2e678ef88a4dcadc!8m2!3d52.3979129!4d4.9373895",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Berlin Cafe",
+    "City": "Tilburg",
+    "Address": "Korvelseweg 169",
+    "Latitude": 51.5509913,
+    "Longitude": 5.073394,
+    "MapsURL": "https://www.google.com/maps/@51.5509913,5.073394,17z/data=!3m1!4b1!4m5!3m4!1s0x47c6be47a5b91c11:0x62321eea62f30b4c!8m2!3d51.5509913!4d5.073394",
     "Tap Water Policy": "Yes, for free",
     "Comments": ""
   }
