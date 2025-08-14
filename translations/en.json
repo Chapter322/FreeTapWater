@@ -1,0 +1,28 @@
+{
+  "title": "Discover restaurants with fairly priced tap water!",
+  "meta_description": "Find restaurants in the Netherlands that offer free or fairly priced tap water. Explore the map, filter by city and category, and help us keep the list up to date.",
+  "intro_title": "Introduction",
+  "intro_summary": "Paying €3 for a glass of water? In the Netherlands, some restaurants overcharge for bottled water while others offer tap water fairly. We map them.",
+  "intro_content": "In the Netherlands, it's common for restaurants and cafés to charge exorbitant prices for bottled water. This often frustrates guests who feel forced to pay for something that should be easily available. Our initiative highlights places that offer tap water at no or minimal cost to promote transparency and encourage fairer practices.",
+  "objective_title": "Objective",
+  "objective_summary": "We aim to build a list of places offering <b>fairly priced tap water</b>, usually provided as a courtesy when ordering other items, promoting fairness and sustainability.",
+  "objective_content": "Our goal is to create a collaborative database of restaurants and cafés that provide <b>fairly priced tap water</b>. By showcasing these establishments, we hope to inspire others to follow suit and foster a culture of fairness and sustainability in the hospitality industry.",
+  "help_title": "How You Can Help",
+  "help_summary": "Share details of restaurants offering free or affordable tap water to help expand our database and foster change.",
+  "help_content": "If you know of a restaurant or café that offers free or affordable tap water, please share their details with us. Your contributions help grow the database and promote positive change. Together, we can encourage more businesses to adopt transparent and fair practices.",
+  "share_btn": "Share Details",
+  "contact_link": "Restaurant owner? Confirm or correct your listing here.",
+  "totals_label": "Totals: Free: {free} | Reasonable cost: {reasonable} | Mineral water or high price: {high}",
+  "find_near": "📍 Find Near Me",
+  "locating": "Locating...",
+  "location_failed": "❌ Location Failed",
+  "all_cities": "All cities",
+  "loading": "Loading restaurant data...",
+  "load_error": "Could not load restaurant data. Please try again later.",
+  "privacy_policy": "Privacy Policy",
+  "categories": {
+    "Free": "Free",
+    "Reasonable cost": "Reasonable cost",
+    "Mineral water or high price": "Mineral water or high price"
+  }
+}

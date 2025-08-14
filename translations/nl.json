@@ -1,0 +1,28 @@
+{
+  "title": "Ontdek restaurants met eerlijk geprijsd kraanwater!",
+  "meta_description": "Vind restaurants in Nederland die gratis of eerlijk geprijsd kraanwater aanbieden. Verken de kaart, filter op stad en categorie, en help de lijst actueel te houden.",
+  "intro_title": "Inleiding",
+  "intro_summary": "€3 betalen voor een glas water? In Nederland vragen sommige restaurants te veel voor flessenwater, terwijl anderen eerlijk kraanwater aanbieden. Wij brengen ze in kaart.",
+  "intro_content": "In Nederland rekenen restaurants en cafés vaak buitensporige prijzen voor flessenwater. Dat leidt tot frustratie bij gasten die zich gedwongen voelen te betalen voor iets dat eenvoudig beschikbaar zou moeten zijn. Ons initiatief laat locaties zien waar kraanwater gratis of tegen een minimale prijs wordt aangeboden, om transparantie en eerlijkere praktijken te stimuleren.",
+  "objective_title": "Doelstelling",
+  "objective_summary": "We willen een lijst opbouwen van plekken met <b>eerlijk geprijsd kraanwater</b>, meestal als service wanneer je iets anders bestelt, om eerlijkheid en duurzaamheid te bevorderen.",
+  "objective_content": "Ons doel is een gezamenlijke database te creëren van restaurants en cafés die <b>eerlijk geprijsd kraanwater</b> aanbieden. Door deze zaken te tonen, hopen we anderen te inspireren en een cultuur van eerlijkheid en duurzaamheid in de horeca te bevorderen.",
+  "help_title": "Hoe u kunt helpen",
+  "help_summary": "Deel gegevens van restaurants die gratis of betaalbaar kraanwater aanbieden en help de database te laten groeien.",
+  "help_content": "Kent u een restaurant of café dat gratis of betaalbaar kraanwater aanbiedt? Deel dan hun gegevens met ons. Uw bijdrage helpt de database te vergroten en positieve verandering te stimuleren. Samen kunnen we meer ondernemingen aanmoedigen om transparante en eerlijke praktijken te hanteren.",
+  "share_btn": "Details delen",
+  "contact_link": "Restauranteigenaar? Bevestig of corrigeer uw vermelding hier.",
+  "totals_label": "Totaal: Gratis: {free} | Redelijke prijs: {reasonable} | Mineraalwater of hoge prijs: {high}",
+  "find_near": "📍 Vind bij mij in de buurt",
+  "locating": "Locatie bepalen...",
+  "location_failed": "❌ Locatie mislukt",
+  "all_cities": "Alle steden",
+  "loading": "Restaurantgegevens laden...",
+  "load_error": "Kan de restaurantgegevens niet laden. Probeer het later opnieuw.",
+  "privacy_policy": "Privacybeleid",
+  "categories": {
+    "Free": "Gratis",
+    "Reasonable cost": "Redelijke prijs",
+    "Mineral water or high price": "Mineraalwater of hoge prijs"
+  }
+}
