@@ -2022,5 +2022,16 @@
     "MapsURL": "https://www.google.com/maps/@52.3588385,4.8805196,17z/data=!3m1!4b1!4m5!3m4!1s0x47c609ddaf1a6aab:0x10f57e7fd29fdc97!8m2!3d52.3588385!4d4.8805196",
     "Tap Water Policy": "No, they charge high price",
     "Comments": "No, we do not serve tap water. We are a place of business and the bottles of water we serve are quality mineral waters from Belgium."
+  },
+  {
+    "Restaurant Name": "Restaurant Brasserie Abshoven",
+    "Country": "Netherlands",
+    "City": "Munstergeleen",
+    "Address": "Abshoven 35",
+    "Latitude": 50.9706996,
+    "Longitude": 5.8529341,
+    "MapsURL": "https://www.google.com/maps/@50.9706996,5.8529341,17z/data=!3m1!4b1!4m5!3m4!1s0x47c0c7607994c8e5:0xca6259fc48632b5e!8m2!3d50.9706996!4d5.8529341",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
   }
 ]
