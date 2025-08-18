@@ -2033,5 +2033,82 @@
     "MapsURL": "https://www.google.com/maps/@50.9706996,5.8529341,17z/data=!3m1!4b1!4m5!3m4!1s0x47c0c7607994c8e5:0xca6259fc48632b5e!8m2!3d50.9706996!4d5.8529341",
     "Tap Water Policy": "Yes, for free",
     "Comments": ""
+  },
+  {
+    "Restaurant Name": "De Binnenkomer",
+    "Country": "Netherlands",
+    "City": "Alkmaar",
+    "Address": "Kerkplein 6",
+    "Latitude": 52.6329098,
+    "Longitude": 4.744426,
+    "MapsURL": "https://www.google.com/maps/@52.6329098,4.744426,17z/data=!3m1!4b1!4m5!3m4!1s0x47cf564aae77ecd9:0x43778a28bf2f54b7!8m2!3d52.6329098!4d4.744426",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Blushing",
+    "Country": "Netherlands",
+    "City": "Amsterdam",
+    "Address": "Paulus Potterstraat 30A",
+    "Latitude": 52.3588108,
+    "Longitude": 4.8803584,
+    "MapsURL": "https://www.google.com/maps/@52.3588108,4.8803584,17z/data=!3m1!4b1!4m5!3m4!1s0x47c609ef84312b37:0x3b945b98b15e15c7!8m2!3d52.3588108!4d4.8803584",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "De Beuze",
+    "Country": "Netherlands",
+    "City": "Zierikzee",
+    "Address": "Havenplein 7",
+    "Latitude": 51.6500776,
+    "Longitude": 3.9208217,
+    "MapsURL": "https://www.google.com/maps/@51.6500776,3.9208217,17z/data=!3m1!4b1!4m5!3m4!1s0x47c4f57d4b379229:0xd20880c6cc477658!8m2!3d51.6500776!4d3.9208217",
+    "Tap Water Policy": "No, they charge high price",
+    "Comments": "We spent over €150 on dinner and had already ordered two glasses of wine and a bottle of beer. After sitting for almost half an hour with empty glasses, I asked the waiter if I could have a glass of tap water. He was extremely rude and flatly refused. I will never return"
+  },
+  {
+    "Restaurant Name": "Bar Bonnie",
+    "Country": "Netherlands",
+    "City": "Amsterdam",
+    "Address": "Amstelveenseweg 226H",
+    "Latitude": 52.3508957,
+    "Longitude": 4.8565299,
+    "MapsURL": "https://www.google.com/maps/@52.3508957,4.8565299,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5e3f0e8b2197d:0xf95603509bde2e7d!8m2!3d52.3508957!4d4.8565299",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Bierprofessor",
+    "Country": "Netherlands",
+    "City": "Eindhoven",
+    "Address": "Stratumseind 33",
+    "Latitude": 51.43683,
+    "Longitude": 5.480696,
+    "MapsURL": "https://www.google.com/maps/@51.43683,5.480696,17z/data=!3m1!4b1!4m5!3m4!1s0x47c6d90256e0902d:0xc85b0e97f3a44f2e!8m2!3d51.43683!4d5.480696",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": ""
+  },
+  {
+    "Restaurant Name": "Rosaria's",
+    "Country": "Netherlands",
+    "City": "Egmond aan Zee",
+    "Address": "Voorstraat 149",
+    "Latitude": 52.6175468,
+    "Longitude": 4.6211252,
+    "MapsURL": "https://www.google.com/maps/@52.6175468,4.6211252,17z/data=!3m1!4b1!4m5!3m4!1s0x47cf589f2f8f2c69:0xd01955fed1aed40c!8m2!3d52.6175468!4d4.6211252",
+    "Tap Water Policy": "Yes, at reasonable cost",
+    "Comments": "When ordering drinks we asked if a jug of tap water was possible but the waiter said only a glass or bottled water was possible and it didn't seem to sit well with him so after that we ordered a large bottle which cost about €7."
+  },
+  {
+    "Restaurant Name": "IJssalon De Mient",
+    "Country": "Netherlands",
+    "City": "Alkmaar",
+    "Address": "Mient 20",
+    "Latitude": 52.6307519,
+    "Longitude": 4.7498614,
+    "MapsURL": "https://www.google.com/maps/@52.6307519,4.7498614,17z/data=!3m1!4b1!4m5!3m4!1s0x47cf57b5bccb9a9f:0x59536a3c4d651aa!8m2!3d52.6307519!4d4.7498614",
+    "Tap Water Policy": "Yes, for free",
+    "Comments": "Glass of water ordered with coffee without problems"
   }
 ]
